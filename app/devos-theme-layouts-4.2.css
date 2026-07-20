@@ -1,0 +1,884 @@
+/* =========================================================
+   DEVOS 4.2 — COMPLETE THEME LAYOUTS
+   Paste this file at the VERY END of app/globals.css
+   ========================================================= */
+
+/* =========================================================
+   SHARED THEME TRANSITIONS
+   ========================================================= */
+
+html,
+body,
+.site-header,
+.hero-section,
+.section-shell,
+.section-shell--tinted,
+.project-card,
+.featured-project,
+.skill-group,
+.value-card,
+.timeline-content,
+.certificate-card,
+.hero-profile-card,
+.terminal-window,
+.contact-section,
+.site-footer,
+.button,
+.icon-button {
+  transition:
+    background 320ms ease,
+    color 320ms ease,
+    border-color 320ms ease,
+    box-shadow 320ms ease,
+    border-radius 320ms ease,
+    transform 320ms ease;
+}
+
+/* =========================================================
+   MATRIX — TERMINAL / HACKER INTERFACE
+   ========================================================= */
+
+html[data-theme="matrix"] {
+  --bg: #020b08;
+  --bg-strong: #06140f;
+  --surface: rgba(4, 24, 17, 0.86);
+  --surface-solid: #071b14;
+  --surface-muted: #0c291d;
+  --ink: #ecfff4;
+  --muted: #8daf9c;
+  --line: rgba(57, 255, 136, 0.17);
+  --line-strong: rgba(57, 255, 136, 0.38);
+  --primary: #39ff88;
+  --primary-bright: #a7ffc8;
+  --green: #39ff88;
+  --purple: #7ef9ff;
+  --gold: #39ff88;
+  --gold-bright: #a7ffc8;
+  --gold-pale: rgba(57, 255, 136, 0.11);
+}
+
+html[data-theme="matrix"] body {
+  background:
+    linear-gradient(rgba(57, 255, 136, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 136, 0.018) 1px, transparent 1px),
+    radial-gradient(circle at 50% 0%, rgba(57, 255, 136, 0.09), transparent 34rem),
+    #020b08;
+  background-size: 34px 34px, 34px 34px, auto, auto;
+}
+
+html[data-theme="matrix"] .site-header {
+  border-bottom: 1px solid rgba(57, 255, 136, 0.2);
+  background: rgba(2, 11, 8, 0.88);
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="matrix"] .site-header::after {
+  content: "SYSTEM ONLINE";
+  position: absolute;
+  right: 24px;
+  bottom: -19px;
+  padding: 3px 8px;
+  color: #39ff88;
+  border: 1px solid rgba(57, 255, 136, 0.25);
+  background: #020b08;
+  font-family: var(--font-code);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+}
+
+html[data-theme="matrix"] .hero-grid {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+html[data-theme="matrix"] .hero-copy h1,
+html[data-theme="matrix"] .section-heading h2,
+html[data-theme="matrix"] .contact-copy h2 {
+  font-family: var(--font-code);
+  letter-spacing: -0.07em;
+}
+
+html[data-theme="matrix"] .hero-copy h1 span {
+  background: linear-gradient(120deg, #39ff88, #c7ffe0);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+html[data-theme="matrix"] .hero-profile-card,
+html[data-theme="matrix"] .project-card,
+html[data-theme="matrix"] .featured-project,
+html[data-theme="matrix"] .skill-group,
+html[data-theme="matrix"] .value-card,
+html[data-theme="matrix"] .timeline-content,
+html[data-theme="matrix"] .certificate-card {
+  border-radius: 4px;
+  border-color: rgba(57, 255, 136, 0.24);
+  background:
+    linear-gradient(180deg, rgba(5, 28, 19, 0.96), rgba(2, 14, 10, 0.94));
+  box-shadow:
+    8px 8px 0 rgba(57, 255, 136, 0.045),
+    0 20px 55px rgba(0, 0, 0, 0.34);
+}
+
+html[data-theme="matrix"] .project-card:hover,
+html[data-theme="matrix"] .skill-group:hover,
+html[data-theme="matrix"] .value-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow:
+    9px 9px 0 rgba(57, 255, 136, 0.11),
+    0 25px 65px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="matrix"] .button {
+  border-radius: 3px;
+  font-family: var(--font-code);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+html[data-theme="matrix"] .button--primary {
+  color: #021008;
+  background: #39ff88;
+  box-shadow: 6px 6px 0 rgba(57, 255, 136, 0.16);
+}
+
+html[data-theme="matrix"] .project-filter button,
+html[data-theme="matrix"] .tech-list span,
+html[data-theme="matrix"] .skill-pills span {
+  border-radius: 3px;
+}
+
+html[data-theme="matrix"] .terminal-window {
+  border-radius: 4px;
+  border: 1px solid rgba(57, 255, 136, 0.3);
+  box-shadow:
+    0 0 0 1px rgba(57, 255, 136, 0.06),
+    0 0 45px rgba(57, 255, 136, 0.09);
+}
+
+html[data-theme="matrix"] .contact-section {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(57, 255, 136, 0.018) 0,
+      rgba(57, 255, 136, 0.018) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    #020b08;
+}
+
+/* =========================================================
+   CYAN — FUTURISTIC GLASS / HOLOGRAPHIC DASHBOARD
+   ========================================================= */
+
+html[data-theme="cyan"] {
+  --bg: #061525;
+  --bg-strong: #09213a;
+  --surface: rgba(10, 42, 67, 0.66);
+  --surface-solid: rgba(10, 36, 58, 0.92);
+  --surface-muted: rgba(17, 58, 88, 0.78);
+  --ink: #effcff;
+  --muted: #9ab9ca;
+  --line: rgba(56, 189, 248, 0.18);
+  --line-strong: rgba(34, 211, 238, 0.44);
+  --primary: #38bdf8;
+  --primary-bright: #a5f3fc;
+  --green: #22d3ee;
+  --purple: #60a5fa;
+  --gold: #38bdf8;
+  --gold-bright: #67e8f9;
+  --gold-pale: rgba(56, 189, 248, 0.13);
+}
+
+html[data-theme="cyan"] body {
+  background:
+    radial-gradient(circle at 8% 8%, rgba(56, 189, 248, 0.22), transparent 27rem),
+    radial-gradient(circle at 92% 22%, rgba(59, 130, 246, 0.18), transparent 31rem),
+    radial-gradient(circle at 52% 100%, rgba(34, 211, 238, 0.12), transparent 35rem),
+    linear-gradient(145deg, #061525, #071b30 55%, #04111f);
+}
+
+html[data-theme="cyan"] body::before {
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+html[data-theme="cyan"] .site-header {
+  top: 12px;
+  width: min(1180px, calc(100% - 30px));
+  margin-inline: auto;
+  border: 1px solid rgba(103, 232, 249, 0.18);
+  border-radius: 22px;
+  background: rgba(7, 28, 48, 0.68);
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(28px) saturate(155%);
+}
+
+html[data-theme="cyan"] .nav-shell {
+  min-height: 70px;
+  padding-inline: 18px;
+}
+
+html[data-theme="cyan"] .hero-section {
+  padding-top: 104px;
+}
+
+html[data-theme="cyan"] .hero-grid {
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: clamp(45px, 6vw, 85px);
+}
+
+html[data-theme="cyan"] .hero-copy h1 span {
+  background:
+    linear-gradient(110deg, #e0faff, #38bdf8 42%, #22d3ee 75%, #93c5fd);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+html[data-theme="cyan"] .hero-profile-card {
+  border-radius: 46px;
+  border: 1px solid rgba(103, 232, 249, 0.25);
+  background:
+    linear-gradient(145deg, rgba(18, 68, 103, 0.52), rgba(5, 27, 48, 0.72));
+  box-shadow:
+    0 42px 110px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.11),
+    0 0 70px rgba(56, 189, 248, 0.08);
+  transform: perspective(1200px) rotateY(-4deg) rotateX(1deg);
+}
+
+html[data-theme="cyan"] .profile-photo-shell {
+  border-radius: 36px;
+}
+
+html[data-theme="cyan"] .section-shell--tinted {
+  border: 0;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(13, 47, 75, 0.44),
+      rgba(4, 20, 37, 0.2)
+    );
+}
+
+html[data-theme="cyan"] .project-card,
+html[data-theme="cyan"] .featured-project,
+html[data-theme="cyan"] .skill-group,
+html[data-theme="cyan"] .value-card,
+html[data-theme="cyan"] .timeline-content,
+html[data-theme="cyan"] .certificate-card,
+html[data-theme="cyan"] .experience-summary-card {
+  border-radius: 30px;
+  border: 1px solid rgba(103, 232, 249, 0.17);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 54, 83, 0.66),
+      rgba(7, 26, 45, 0.7)
+    );
+  box-shadow:
+    0 28px 75px rgba(0, 0, 0, 0.27),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(24px) saturate(140%);
+}
+
+html[data-theme="cyan"] .project-card:hover,
+html[data-theme="cyan"] .skill-group:hover,
+html[data-theme="cyan"] .value-card:hover {
+  transform: translateY(-10px) scale(1.012);
+  border-color: rgba(103, 232, 249, 0.44);
+  box-shadow:
+    0 35px 90px rgba(0, 0, 0, 0.35),
+    0 0 42px rgba(56, 189, 248, 0.1);
+}
+
+html[data-theme="cyan"] .button {
+  border-radius: 16px;
+}
+
+html[data-theme="cyan"] .button--primary {
+  color: #03131e;
+  background:
+    linear-gradient(135deg, #a5f3fc, #38bdf8 45%, #3b82f6);
+  box-shadow:
+    0 14px 34px rgba(56, 189, 248, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+html[data-theme="cyan"] .project-filter button,
+html[data-theme="cyan"] .tech-list span,
+html[data-theme="cyan"] .skill-pills span {
+  border-radius: 14px;
+  background: rgba(12, 44, 69, 0.62);
+}
+
+html[data-theme="cyan"] .project-visual {
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at 75% 15%, rgba(103, 232, 249, 0.18), transparent 25rem),
+    linear-gradient(150deg, #0b3854, #061729 62%, #0c2845);
+}
+
+html[data-theme="cyan"] .terminal-window {
+  border-radius: 30px;
+  border-color: rgba(103, 232, 249, 0.22);
+  background: rgba(3, 17, 30, 0.83);
+  backdrop-filter: blur(26px);
+  box-shadow:
+    0 38px 100px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(56, 189, 248, 0.08);
+}
+
+html[data-theme="cyan"] .contact-section {
+  background:
+    radial-gradient(circle at 86% 18%, rgba(56, 189, 248, 0.22), transparent 29rem),
+    radial-gradient(circle at 10% 90%, rgba(37, 99, 235, 0.15), transparent 30rem),
+    linear-gradient(145deg, #061525, #08243a);
+}
+
+html[data-theme="cyan"] .site-footer {
+  background: rgba(5, 20, 35, 0.78);
+  backdrop-filter: blur(20px);
+}
+
+/* =========================================================
+   PURPLE — COSMIC / NEON CREATIVE STUDIO
+   ========================================================= */
+
+html[data-theme="purple"] {
+  --bg: #10091f;
+  --bg-strong: #1b1033;
+  --surface: rgba(35, 19, 63, 0.72);
+  --surface-solid: rgba(30, 16, 55, 0.94);
+  --surface-muted: rgba(53, 27, 91, 0.76);
+  --ink: #fff7ff;
+  --muted: #c2add4;
+  --line: rgba(192, 132, 252, 0.18);
+  --line-strong: rgba(244, 114, 182, 0.42);
+  --primary: #c084fc;
+  --primary-bright: #f0abfc;
+  --green: #f472b6;
+  --purple: #8b5cf6;
+  --gold: #c084fc;
+  --gold-bright: #f472b6;
+  --gold-pale: rgba(192, 132, 252, 0.13);
+}
+
+html[data-theme="purple"] body {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(139, 92, 246, 0.27), transparent 28rem),
+    radial-gradient(circle at 88% 12%, rgba(244, 114, 182, 0.2), transparent 31rem),
+    radial-gradient(circle at 50% 95%, rgba(192, 132, 252, 0.12), transparent 34rem),
+    linear-gradient(145deg, #10091f, #170d2b 48%, #090713);
+}
+
+html[data-theme="purple"] body::before {
+  background-image:
+    radial-gradient(circle, rgba(240, 171, 252, 0.15) 1px, transparent 1.5px);
+  background-size: 48px 48px;
+  opacity: 0.4;
+}
+
+html[data-theme="purple"] .site-header {
+  border: 0;
+  border-bottom: 1px solid rgba(240, 171, 252, 0.16);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(20, 10, 38, 0.88),
+      rgba(40, 17, 68, 0.76),
+      rgba(20, 10, 38, 0.88)
+    );
+  box-shadow: 0 14px 55px rgba(9, 2, 21, 0.4);
+}
+
+html[data-theme="purple"] .brand-mark {
+  border-radius: 50%;
+  border-color: rgba(244, 114, 182, 0.28);
+  background:
+    radial-gradient(circle at 30% 25%, #c084fc, #3b1761 72%);
+  box-shadow: 0 0 32px rgba(192, 132, 252, 0.18);
+}
+
+html[data-theme="purple"] .hero-section {
+  isolation: isolate;
+}
+
+html[data-theme="purple"] .hero-section::before {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(240, 171, 252, 0.08) 1px, transparent 2px);
+  background-size: 58px 58px;
+  opacity: 0.58;
+}
+
+html[data-theme="purple"] .hero-grid {
+  grid-template-columns: 0.88fr 1.12fr;
+}
+
+html[data-theme="purple"] .hero-copy h1 span {
+  background:
+    linear-gradient(120deg, #f5d0fe, #c084fc 34%, #f472b6 70%, #818cf8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  filter:
+    drop-shadow(0 0 22px rgba(192, 132, 252, 0.24))
+    drop-shadow(0 0 42px rgba(244, 114, 182, 0.12));
+}
+
+html[data-theme="purple"] .hero-profile-card {
+  border-radius: 80px 30px 80px 30px;
+  border: 1px solid rgba(240, 171, 252, 0.24);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(70, 30, 111, 0.62),
+      rgba(22, 10, 43, 0.84)
+    );
+  box-shadow:
+    0 45px 120px rgba(5, 1, 14, 0.55),
+    0 0 75px rgba(192, 132, 252, 0.12);
+  transform: rotate(-2deg);
+}
+
+html[data-theme="purple"] .profile-photo-shell {
+  border-radius: 68px 22px 68px 22px;
+}
+
+html[data-theme="purple"] .project-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+html[data-theme="purple"] .project-card:nth-child(even) {
+  transform: translateY(34px);
+}
+
+html[data-theme="purple"] .project-card,
+html[data-theme="purple"] .featured-project,
+html[data-theme="purple"] .skill-group,
+html[data-theme="purple"] .value-card,
+html[data-theme="purple"] .timeline-content,
+html[data-theme="purple"] .certificate-card,
+html[data-theme="purple"] .experience-summary-card {
+  border-radius: 34px 12px 34px 12px;
+  border: 1px solid rgba(240, 171, 252, 0.17);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(52, 23, 88, 0.78),
+      rgba(21, 10, 40, 0.86)
+    );
+  box-shadow:
+    0 30px 75px rgba(7, 2, 17, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.055);
+}
+
+html[data-theme="purple"] .project-card:hover,
+html[data-theme="purple"] .skill-group:hover,
+html[data-theme="purple"] .value-card:hover {
+  border-color: rgba(244, 114, 182, 0.46);
+  box-shadow:
+    0 40px 95px rgba(5, 1, 14, 0.5),
+    0 0 45px rgba(192, 132, 252, 0.12),
+    0 0 70px rgba(244, 114, 182, 0.07);
+}
+
+html[data-theme="purple"] .button {
+  border-radius: 999px;
+}
+
+html[data-theme="purple"] .button--primary {
+  color: #190724;
+  background:
+    linear-gradient(120deg, #f0abfc, #c084fc 45%, #f472b6);
+  box-shadow:
+    0 16px 38px rgba(192, 132, 252, 0.28),
+    0 0 28px rgba(244, 114, 182, 0.11);
+}
+
+html[data-theme="purple"] .project-filter button,
+html[data-theme="purple"] .tech-list span,
+html[data-theme="purple"] .skill-pills span {
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(192, 132, 252, 0.09),
+      rgba(244, 114, 182, 0.06)
+    );
+}
+
+html[data-theme="purple"] .project-visual {
+  border-radius: 60px 20px 60px 20px;
+  background:
+    radial-gradient(circle at 78% 15%, rgba(244, 114, 182, 0.22), transparent 25rem),
+    linear-gradient(145deg, #35195a, #150b29 58%, #211144);
+}
+
+html[data-theme="purple"] .terminal-window {
+  border-radius: 34px 10px 34px 10px;
+  border-color: rgba(240, 171, 252, 0.22);
+  background:
+    linear-gradient(145deg, rgba(30, 11, 52, 0.94), rgba(13, 7, 27, 0.96));
+  box-shadow:
+    0 42px 110px rgba(5, 1, 14, 0.58),
+    0 0 65px rgba(192, 132, 252, 0.09);
+}
+
+html[data-theme="purple"] .terminal-bar {
+  background:
+    linear-gradient(90deg, #2b1249, #541d66, #2b1249);
+}
+
+html[data-theme="purple"] .contact-section {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(244, 114, 182, 0.22), transparent 30rem),
+    radial-gradient(circle at 8% 92%, rgba(139, 92, 246, 0.2), transparent 29rem),
+    linear-gradient(145deg, #120821, #25103c);
+}
+
+html[data-theme="purple"] .site-footer {
+  background:
+    linear-gradient(90deg, #0d0718, #1d0d31, #0d0718);
+}
+
+/* =========================================================
+   EMBER — INDUSTRIAL / WARM CODE WORKSHOP
+   ========================================================= */
+
+html[data-theme="ember"] {
+  --bg: #160d08;
+  --bg-strong: #25150d;
+  --surface: rgba(48, 26, 15, 0.84);
+  --surface-solid: #2b180f;
+  --surface-muted: #3a2114;
+  --ink: #fff5e7;
+  --muted: #c6aa90;
+  --line: rgba(251, 146, 60, 0.2);
+  --line-strong: rgba(251, 191, 36, 0.46);
+  --primary: #fb923c;
+  --primary-bright: #fdba74;
+  --green: #fbbf24;
+  --purple: #ef4444;
+  --gold: #fb923c;
+  --gold-bright: #fbbf24;
+  --gold-pale: rgba(251, 146, 60, 0.13);
+}
+
+html[data-theme="ember"] body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(251, 146, 60, 0.2), transparent 28rem),
+    radial-gradient(circle at 90% 30%, rgba(239, 68, 68, 0.13), transparent 30rem),
+    repeating-linear-gradient(
+      135deg,
+      rgba(251, 146, 60, 0.018) 0,
+      rgba(251, 146, 60, 0.018) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    #160d08;
+}
+
+html[data-theme="ember"] body::before {
+  background-image:
+    linear-gradient(rgba(251, 146, 60, 0.035) 1px, transparent 1px);
+  background-size: 100% 44px;
+}
+
+html[data-theme="ember"] .site-header {
+  border-bottom: 3px solid #fb923c;
+  background:
+    linear-gradient(90deg, #1c100a, #321b10 52%, #1c100a);
+  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="ember"] .brand-mark {
+  border-radius: 8px;
+  border-color: rgba(251, 191, 36, 0.32);
+  background:
+    linear-gradient(145deg, #4a2915, #201108);
+  box-shadow: 5px 5px 0 rgba(251, 146, 60, 0.13);
+}
+
+html[data-theme="ember"] .desktop-nav a.active::after {
+  width: 100%;
+  height: 3px;
+  background: #fb923c;
+  box-shadow: none;
+}
+
+html[data-theme="ember"] .hero-grid {
+  grid-template-columns: 1.22fr 0.78fr;
+}
+
+html[data-theme="ember"] .hero-kicker,
+html[data-theme="ember"] .eyebrow,
+html[data-theme="ember"] .project-index {
+  color: #fbbf24;
+}
+
+html[data-theme="ember"] .hero-copy h1 span {
+  background:
+    linear-gradient(110deg, #fff1d6, #fb923c 42%, #fbbf24 75%, #ef4444);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+html[data-theme="ember"] .hero-profile-card {
+  border-radius: 8px;
+  border: 1px solid rgba(251, 146, 60, 0.28);
+  background:
+    linear-gradient(145deg, rgba(74, 38, 19, 0.88), rgba(29, 15, 8, 0.92));
+  box-shadow:
+    14px 14px 0 rgba(251, 146, 60, 0.07),
+    0 38px 90px rgba(0, 0, 0, 0.48);
+  transform: rotate(1deg);
+  clip-path:
+    polygon(
+      0 0,
+      calc(100% - 28px) 0,
+      100% 28px,
+      100% 100%,
+      28px 100%,
+      0 calc(100% - 28px)
+    );
+}
+
+html[data-theme="ember"] .profile-photo-shell {
+  border-radius: 4px;
+}
+
+html[data-theme="ember"] .section-heading h2,
+html[data-theme="ember"] .contact-copy h2 {
+  text-transform: uppercase;
+  letter-spacing: -0.045em;
+}
+
+html[data-theme="ember"] .project-card,
+html[data-theme="ember"] .featured-project,
+html[data-theme="ember"] .skill-group,
+html[data-theme="ember"] .value-card,
+html[data-theme="ember"] .timeline-content,
+html[data-theme="ember"] .certificate-card,
+html[data-theme="ember"] .experience-summary-card {
+  position: relative;
+  border-radius: 2px;
+  border: 1px solid rgba(251, 146, 60, 0.22);
+  border-left: 4px solid #fb923c;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(56, 29, 15, 0.94),
+      rgba(26, 14, 8, 0.94)
+    );
+  box-shadow:
+    10px 10px 0 rgba(251, 146, 60, 0.055),
+    0 24px 62px rgba(0, 0, 0, 0.36);
+  clip-path:
+    polygon(
+      0 0,
+      calc(100% - 18px) 0,
+      100% 18px,
+      100% 100%,
+      0 100%
+    );
+}
+
+html[data-theme="ember"] .project-card::before,
+html[data-theme="ember"] .skill-group::before,
+html[data-theme="ember"] .certificate-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  background: rgba(251, 146, 60, 0.34);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+html[data-theme="ember"] .project-card:hover,
+html[data-theme="ember"] .skill-group:hover,
+html[data-theme="ember"] .value-card:hover {
+  transform: translate(-4px, -4px);
+  border-left-color: #fbbf24;
+  box-shadow:
+    14px 14px 0 rgba(251, 191, 36, 0.11),
+    0 30px 75px rgba(0, 0, 0, 0.44);
+}
+
+html[data-theme="ember"] .button {
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  clip-path:
+    polygon(
+      0 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% 100%,
+      12px 100%,
+      0 calc(100% - 12px)
+    );
+}
+
+html[data-theme="ember"] .button--primary {
+  color: #241006;
+  background:
+    linear-gradient(120deg, #fbbf24, #fb923c 55%, #ef4444);
+  box-shadow: 7px 7px 0 rgba(251, 146, 60, 0.16);
+}
+
+html[data-theme="ember"] .project-filter button,
+html[data-theme="ember"] .tech-list span,
+html[data-theme="ember"] .skill-pills span {
+  border-radius: 2px;
+  border-left: 2px solid #fb923c;
+  background: rgba(55, 29, 16, 0.72);
+}
+
+html[data-theme="ember"] .project-visual {
+  border-radius: 2px;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(251, 146, 60, 0.04) 0,
+      rgba(251, 146, 60, 0.04) 2px,
+      transparent 2px,
+      transparent 11px
+    ),
+    linear-gradient(145deg, #482515, #1d1009 60%, #351b0f);
+  clip-path:
+    polygon(
+      0 0,
+      calc(100% - 30px) 0,
+      100% 30px,
+      100% 100%,
+      30px 100%,
+      0 calc(100% - 30px)
+    );
+}
+
+html[data-theme="ember"] .terminal-window {
+  border-radius: 3px;
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  background: #160c07;
+  box-shadow:
+    10px 10px 0 rgba(251, 146, 60, 0.07),
+    0 36px 90px rgba(0, 0, 0, 0.5);
+}
+
+html[data-theme="ember"] .terminal-bar {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(251, 191, 36, 0.11) 0,
+      rgba(251, 191, 36, 0.11) 8px,
+      rgba(251, 146, 60, 0.04) 8px,
+      rgba(251, 146, 60, 0.04) 16px
+    ),
+    #2a160c;
+}
+
+html[data-theme="ember"] .contact-section {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(251, 146, 60, 0.2), transparent 29rem),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(251, 191, 36, 0.025) 0,
+      rgba(251, 191, 36, 0.025) 2px,
+      transparent 2px,
+      transparent 14px
+    ),
+    #170d08;
+}
+
+html[data-theme="ember"] .site-footer {
+  border-top: 3px solid #fb923c;
+  background: #140b07;
+}
+
+/* =========================================================
+   THEME-SPECIFIC MATRIX RAIN OPACITY
+   ========================================================= */
+
+html[data-theme="matrix"] .matrix-rain {
+  opacity: 0.42;
+}
+
+html[data-theme="cyan"] .matrix-rain {
+  opacity: 0.24;
+}
+
+html[data-theme="purple"] .matrix-rain {
+  opacity: 0.2;
+}
+
+html[data-theme="ember"] .matrix-rain {
+  opacity: 0.18;
+}
+
+/* =========================================================
+   RESPONSIVE THEME RESETS
+   ========================================================= */
+
+@media (max-width: 1080px) {
+  html[data-theme="purple"] .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  html[data-theme="matrix"] .hero-grid,
+  html[data-theme="cyan"] .hero-grid,
+  html[data-theme="purple"] .hero-grid,
+  html[data-theme="ember"] .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-theme="cyan"] .site-header {
+    top: 6px;
+    width: calc(100% - 18px);
+  }
+
+  html[data-theme="cyan"] .hero-section {
+    padding-top: 92px;
+  }
+
+  html[data-theme="purple"] .hero-profile-card,
+  html[data-theme="cyan"] .hero-profile-card,
+  html[data-theme="ember"] .hero-profile-card {
+    transform: none;
+  }
+}
+
+@media (max-width: 700px) {
+  html[data-theme="purple"] .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-theme="purple"] .project-card:nth-child(even) {
+    transform: none;
+  }
+
+  html[data-theme="cyan"] .site-header {
+    border-radius: 16px;
+  }
+
+  html[data-theme="purple"] .hero-profile-card,
+  html[data-theme="purple"] .profile-photo-shell {
+    border-radius: 36px 14px 36px 14px;
+  }
+
+  html[data-theme="ember"] .project-card,
+  html[data-theme="ember"] .featured-project,
+  html[data-theme="ember"] .skill-group,
+  html[data-theme="ember"] .value-card,
+  html[data-theme="ember"] .timeline-content,
+  html[data-theme="ember"] .certificate-card {
+    clip-path: none;
+  }
+}
