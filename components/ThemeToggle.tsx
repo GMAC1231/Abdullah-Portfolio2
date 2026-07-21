@@ -63,6 +63,9 @@ export default function ThemeToggle() {
     const nextTheme =
       THEMES[(index + 1) % THEMES.length];
 
+    delete document.documentElement.dataset
+      .themeChangeSource;
+
     const nextLayout =
       applyThemeToDocument(nextTheme);
 
@@ -102,6 +105,7 @@ export default function ThemeToggle() {
         detail: {
           theme: nextTheme,
           layout: nextLayout,
+          source: "manual",
         },
       }),
     );

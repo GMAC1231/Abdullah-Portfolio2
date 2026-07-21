@@ -5,18 +5,25 @@ import "./theme-layouts.css";
 import "./red-theme.css";
 import "./boot-loader-themes.css";
 
+import AutoThemeController from "@/components/AutoThemeController";
 import BootLoader from "@/components/BootLoader";
 import MatrixRain from "@/components/MatrixRain";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    "https://gmac1231.github.io/Abdullah-Portfolio2/",
+  ),
+
   title: {
     default: "Abdullah Muhammad | Software, Web & Mobile Developer",
     template: "%s | Abdullah Muhammad",
   },
+
   description:
     "Portfolio of Abdullah Muhammad, a software, web, mobile, AI, data, and Unity game developer building responsive React, Next.js, Firebase, Flutter, Flask, analytics, and interactive solutions.",
+
   keywords: [
     "Abdullah Muhammad",
     "Frontend Developer Oman",
@@ -28,24 +35,25 @@ export const metadata: Metadata = {
     "Unity Game Developer",
     "Data Analytics",
   ],
+
   authors: [{ name: "Abdullah Muhammad" }],
   creator: "Abdullah Muhammad",
 
   icons: {
     icon: [
       {
-        url: `${basePath}/favicon.ico?v=4`,
+        url: `${basePath}/favicon.ico?v=5`,
         sizes: "any",
       },
       {
-        url: `${basePath}/icon.svg?v=4`,
+        url: `${basePath}/icon.svg?v=5`,
         type: "image/svg+xml",
       },
     ],
-    shortcut: `${basePath}/favicon.ico?v=4`,
+    shortcut: `${basePath}/favicon.ico?v=5`,
     apple: [
       {
-        url: `${basePath}/apple-icon.png?v=4`,
+        url: `${basePath}/apple-icon.png?v=5`,
         type: "image/png",
         sizes: "180x180",
       },
@@ -55,7 +63,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Abdullah Muhammad | Software, Web & Mobile Developer",
     description:
-      "Responsive web applications, mobile experiences, Firebase systems, and practical software solutions.",
+      "Responsive web applications, mobile experiences, Firebase systems, analytics, Unity games, and practical software solutions.",
     type: "website",
     url: "https://gmac1231.github.io/Abdullah-Portfolio2/",
     siteName: "Abdullah Muhammad Portfolio",
@@ -66,7 +74,13 @@ const themeScript = `
   try {
     document.documentElement.classList.add('dark');
 
-    const allowedThemes = ['matrix', 'cyan', 'purple', 'ember', 'red'];
+    const allowedThemes = [
+      'matrix',
+      'cyan',
+      'purple',
+      'ember',
+      'red'
+    ];
 
     const themeLayouts = {
       matrix: 'console',
@@ -80,14 +94,16 @@ const themeScript = `
       localStorage.getItem('portfolio-devos-settings') || '{}'
     );
 
-    const requestedTheme = savedRuntime.theme || savedRuntime.accent;
+    const requestedTheme =
+      savedRuntime.theme || savedRuntime.accent;
 
     const runtimeTheme = allowedThemes.includes(requestedTheme)
       ? requestedTheme
       : 'matrix';
 
     const runtimeLayout = themeLayouts[runtimeTheme];
-    const matrixEnabled = savedRuntime.matrixEnabled !== false;
+    const matrixEnabled =
+      savedRuntime.matrixEnabled !== false;
 
     const allowedWeather = [
       'clear',
@@ -98,16 +114,29 @@ const themeScript = `
       'snow',
     ];
 
-    const runtimeWeather = allowedWeather.includes(savedRuntime.weather)
+    const runtimeWeather = allowedWeather.includes(
+      savedRuntime.weather
+    )
       ? savedRuntime.weather
       : 'clear';
 
-    document.documentElement.dataset.layout = runtimeLayout;
-    document.documentElement.dataset.themeLayout = runtimeLayout;
-    document.documentElement.dataset.theme = runtimeTheme;
-    document.documentElement.dataset.accent = runtimeTheme;
-    document.documentElement.dataset.matrix = matrixEnabled ? 'on' : 'off';
-    document.documentElement.dataset.weather = runtimeWeather;
+    document.documentElement.dataset.layout =
+      runtimeLayout;
+
+    document.documentElement.dataset.themeLayout =
+      runtimeLayout;
+
+    document.documentElement.dataset.theme =
+      runtimeTheme;
+
+    document.documentElement.dataset.accent =
+      runtimeTheme;
+
+    document.documentElement.dataset.matrix =
+      matrixEnabled ? 'on' : 'off';
+
+    document.documentElement.dataset.weather =
+      runtimeWeather;
   } catch (_) {
     document.documentElement.classList.add('dark');
     document.documentElement.dataset.layout = 'console';
@@ -141,6 +170,7 @@ export default function RootLayout({
       <body id="top">
         <BootLoader />
         <MatrixRain />
+        <AutoThemeController />
 
         <div className="app-shell">
           {children}

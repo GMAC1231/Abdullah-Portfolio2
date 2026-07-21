@@ -292,7 +292,9 @@ export default function BootLoader() {
       setTheme(initialTheme);
     });
 
-    const activateThemeLoader = () => {
+    const activateThemeLoader = (
+      source?: "automatic" | "manual",
+    ) => {
       const nextTheme = readActiveTheme();
 
       if (nextTheme === activeThemeRef.current) {
@@ -303,14 +305,41 @@ export default function BootLoader() {
       setTheme(nextTheme);
 
       /*
-       * The first loader may already be hidden.
-       * Reset and replay it whenever the active theme changes.
+       * Automatic rotation changes the page smoothly without
+       * blocking visitors with a full boot sequence every 30 seconds.
+       * Manual theme changes still replay the themed loader.
        */
+      if (source === "automatic") {
+        return;
+      }
+
       replay();
     };
 
+    const handleThemeMutation = () => {
+      const source =
+        document.documentElement.dataset
+          .themeChangeSource;
+
+      activateThemeLoader(
+        source === "automatic"
+          ? "automatic"
+          : "manual",
+      );
+    };
+
+    const handleThemeEvent = (event: Event) => {
+      const customEvent = event as CustomEvent<{
+        source?: "automatic" | "manual";
+      }>;
+
+      activateThemeLoader(
+        customEvent.detail?.source,
+      );
+    };
+
     const observer = new MutationObserver(
-      activateThemeLoader,
+      handleThemeMutation,
     );
 
     observer.observe(document.documentElement, {
@@ -320,7 +349,7 @@ export default function BootLoader() {
 
     window.addEventListener(
       "devos-theme-change",
-      activateThemeLoader,
+      handleThemeEvent,
     );
 
     return () => {
@@ -329,7 +358,7 @@ export default function BootLoader() {
 
       window.removeEventListener(
         "devos-theme-change",
-        activateThemeLoader,
+        handleThemeEvent,
       );
     };
   }, [replay]);

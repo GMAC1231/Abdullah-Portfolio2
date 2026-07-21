@@ -6526,3 +6526,51 @@ html[data-theme="red"] .devos-statusbar {
   background: linear-gradient(90deg, #7f1d1d, #dc2626, #fb7185);
 }
 
+
+/* =========================================================
+   AUTOMATIC THEME ROTATION
+   Smoothly blends visual tokens during the 30-second cycle.
+   Layout changes remain instant so every theme keeps its own
+   intended page structure.
+   ========================================================= */
+
+html.devos-auto-theme-transition,
+html.devos-auto-theme-transition body,
+html.devos-auto-theme-transition .app-shell,
+html.devos-auto-theme-transition .site-header,
+html.devos-auto-theme-transition .site-footer,
+html.devos-auto-theme-transition section,
+html.devos-auto-theme-transition .project-card,
+html.devos-auto-theme-transition .skill-group,
+html.devos-auto-theme-transition .experience-card,
+html.devos-auto-theme-transition .certificate-card,
+html.devos-auto-theme-transition .terminal-shell,
+html.devos-auto-theme-transition .button,
+html.devos-auto-theme-transition .icon-button {
+  transition:
+    color 0.45s ease,
+    background-color 0.8s ease,
+    background-image 0.8s ease,
+    border-color 0.7s ease,
+    box-shadow 0.8s ease,
+    text-shadow 0.6s ease,
+    opacity 0.45s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.devos-auto-theme-transition,
+  html.devos-auto-theme-transition body,
+  html.devos-auto-theme-transition .app-shell,
+  html.devos-auto-theme-transition .site-header,
+  html.devos-auto-theme-transition .site-footer,
+  html.devos-auto-theme-transition section,
+  html.devos-auto-theme-transition .project-card,
+  html.devos-auto-theme-transition .skill-group,
+  html.devos-auto-theme-transition .experience-card,
+  html.devos-auto-theme-transition .certificate-card,
+  html.devos-auto-theme-transition .terminal-shell,
+  html.devos-auto-theme-transition .button,
+  html.devos-auto-theme-transition .icon-button {
+    transition: none;
+  }
+}
