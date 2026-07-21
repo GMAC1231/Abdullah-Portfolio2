@@ -8,13 +8,15 @@ import "./boot-loader-themes.css";
 import BootLoader from "@/components/BootLoader";
 import MatrixRain from "@/components/MatrixRain";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const metadata: Metadata = {
   title: {
-    default: "Abdullah Muhammad | Frontend, Web & Mobile Developer",
+    default: "Abdullah Muhammad | Software, Web & Mobile Developer",
     template: "%s | Abdullah Muhammad",
   },
   description:
-    "Portfolio of Abdullah Muhammad, a frontend, web, and mobile application developer building responsive React, Next.js, Firebase, Flutter, and Flask solutions.",
+    "Portfolio of Abdullah Muhammad, a software, web, mobile, AI, data, and Unity game developer building responsive React, Next.js, Firebase, Flutter, Flask, analytics, and interactive solutions.",
   keywords: [
     "Abdullah Muhammad",
     "Frontend Developer Oman",
@@ -23,6 +25,8 @@ export const metadata: Metadata = {
     "Firebase Developer",
     "Mobile App Developer",
     "Flutter Developer",
+    "Unity Game Developer",
+    "Data Analytics",
   ],
   authors: [{ name: "Abdullah Muhammad" }],
   creator: "Abdullah Muhammad",
@@ -30,23 +34,18 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/favicon.ico",
+        url: `${basePath}/favicon.ico?v=4`,
         sizes: "any",
       },
       {
-        url: "/icon.png",
-        type: "image/png",
-        sizes: "512x512",
-      },
-      {
-        url: "/icon.svg",
+        url: `${basePath}/icon.svg?v=4`,
         type: "image/svg+xml",
       },
     ],
-    shortcut: "/favicon.ico",
+    shortcut: `${basePath}/favicon.ico?v=4`,
     apple: [
       {
-        url: "/apple-icon.png",
+        url: `${basePath}/apple-icon.png?v=4`,
         type: "image/png",
         sizes: "180x180",
       },
@@ -54,10 +53,12 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Abdullah Muhammad | Frontend, Web & Mobile Developer",
+    title: "Abdullah Muhammad | Software, Web & Mobile Developer",
     description:
       "Responsive web applications, mobile experiences, Firebase systems, and practical software solutions.",
     type: "website",
+    url: "https://gmac1231.github.io/Abdullah-Portfolio2/",
+    siteName: "Abdullah Muhammad Portfolio",
   },
 };
 

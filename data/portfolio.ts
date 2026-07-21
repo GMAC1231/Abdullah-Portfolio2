@@ -5,7 +5,8 @@ export type ProjectCategory =
   | "Full Stack"
   | "Firebase"
   | "Guide"
-  | "Portfolio";
+  | "Portfolio"
+  | "Game";
 
 export type ProjectInternship = {
   company: string;
@@ -43,7 +44,8 @@ export type Project = {
     | "portfolio"
     | "flower"
     | "meditation"
-    | "food";
+    | "food"
+    | "game";
 };
 
 export const projects: Project[] = [
@@ -381,6 +383,42 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/GMAC1231/meditationApp",
     visual: "meditation",
   },
+  {
+    slug: "unity-game-development-collection",
+    title: "Unity Game Development Collection",
+    shortTitle: "Unity Game Collection",
+    eyebrow: "Michigan State University Specialization",
+    summary:
+      "A collection of Unity projects spanning a 2D shooter, 2D platformer, first-person shooter, 3D platformer, and an original capstone prototype.",
+    description:
+      "This game-development collection was completed through Michigan State University’s five-course Game Design and Development with Unity specialization. The work combines game-design theory with practical Unity production across 2D and 3D projects, culminating in an original playable capstone prototype.",
+    categories: ["Game"],
+    technologies: [
+      "Unity",
+      "C#",
+      "2D Game Development",
+      "3D Game Development",
+      "Gameplay Prototyping",
+      "Level Design",
+    ],
+    highlights: [
+      "2D shooter game project",
+      "2D platformer game project",
+      "First-person shooter project",
+      "3D platformer project",
+      "Original game-design capstone prototype",
+      "Game mechanics, level design, iteration, and playtesting",
+    ],
+    challenge:
+      "Apply game-design principles across multiple genres while learning to translate mechanics, levels, player feedback, and technical implementation into playable Unity experiences.",
+    solution:
+      "I developed four guided Unity projects and then planned and produced an original capstone prototype, using iterative design, reusable gameplay systems, level construction, and testing to improve the player experience.",
+    outcome:
+      "The specialization expanded my software-development portfolio into interactive game production and strengthened my Unity, C#, prototyping, level-design, and gameplay-system skills.",
+    liveUrl: "https://abdullah0364.itch.io/",
+    visual: "game",
+  },
+
 ];
 
 export const skillGroups = [
@@ -393,13 +431,13 @@ export const skillGroups = [
   {
     title: "Mobile Development",
     description: "Cross-platform and native mobile application experiences.",
-    skills: ["Flutter", "Dart", "React Native", "Expo", "Android Studio", "Java"],
+    skills: ["Flutter", "Dart", "React Native", "Expo", "Android Studio", "Java", "Swift", "Mobile UI/UX", "Notifications"],
     icon: "mobile",
   },
   {
     title: "Backend & APIs",
-    description: "Practical backend services and application integrations.",
-    skills: ["Python", "Flask", "REST APIs", "Spring Boot", "Google SMTP", "Node.js Integration"],
+    description: "Practical backend services, integrations, and application workflows.",
+    skills: ["Python", "Flask", "REST APIs", "Spring Boot", "Google SMTP", "Node.js", "Express", "Django"],
     icon: "server",
   },
   {
@@ -409,43 +447,55 @@ export const skillGroups = [
     icon: "database",
   },
   {
+    title: "Data & Analytics",
+    description: "Data preparation, modelling, visualisation, and evidence-based decisions.",
+    skills: ["Python", "R", "Tableau", "Statistics", "Regression Analysis", "Machine Learning", "Predictive Modelling", "Business Intelligence", "Data Pipelines"],
+    icon: "analytics",
+  },
+  {
+    title: "Game Development",
+    description: "Interactive 2D and 3D experiences built through iterative design and prototyping.",
+    skills: ["Unity", "C#", "2D Games", "3D Games", "Platformers", "First-Person Games", "Gameplay Prototyping", "Level Design"],
+    icon: "game",
+  },
+  {
     title: "Tools & Workflow",
-    description: "Version control, documentation, deployment, and collaboration.",
-    skills: ["Git", "GitHub", "GitHub Actions", "VS Code", "LaTeX", "Overleaf", "Vercel", "GitHub Pages"],
+    description: "Version control, documentation, deployment, and development operations.",
+    skills: ["Git", "GitHub", "GitHub Actions", "VS Code", "Anaconda", "LaTeX", "Overleaf", "Docker", "Kubernetes", "GitHub Pages"],
     icon: "tools",
   },
   {
     title: "AI-Assisted Development",
-    description: "Using AI responsibly to improve speed, debugging, and documentation.",
-    skills: ["Prompt Engineering", "Code Review", "Debugging", "Documentation", "Workflow Automation", "Generative AI"],
+    description: "Using AI responsibly to improve speed, debugging, logic review, and documentation.",
+    skills: ["Generative AI", "Prompt Engineering", "Code Generation", "Logic Review", "AI-Assisted Debugging", "Python AI Applications", "Flask AI Services"],
     icon: "sparkles",
   },
 ];
 
 export const experiences = [
   {
-    period: "2026",
-    role: "Frontend Developer Intern",
+    period: "June 2026 – July 2026",
+    role: "Frontend Development Intern",
     organization: "SoftGrowTech · Remote",
     description:
-      "Completed responsive frontend projects and a Firebase-connected final application featuring authentication, Firestore CRUD operations, analytics, themes, and GitHub Pages deployment.",
-    tags: ["React", "Next.js", "Firebase", "TypeScript", "Tailwind CSS"],
+      "Completed a four-week frontend-development internship and built responsive JavaScript projects plus TaskFlow, a Next.js and Firebase project-management dashboard with authentication, Firestore CRUD operations, analytics, themes, modals, notifications, and GitHub Pages deployment.",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase"],
   },
   {
-    period: "2026",
-    role: "Web Development Intern",
+    period: "June 2026",
+    role: "Remote Web Development Intern",
     organization: "Qwetrum Technologies · Remote",
     description:
-      "Built responsive landing pages, JavaScript applications, validation workflows, localStorage projects, and a complete e-commerce capstone during a four-week internship.",
-    tags: ["HTML", "CSS", "JavaScript", "Bootstrap", "GitHub Pages"],
+      "Built a REST Countries application, timed quiz, validated multi-step form with saved progress, mini e-commerce interface, and complete shopping capstone using responsive design, JavaScript ES6+, external APIs, localStorage, filtering, sorting, and cart management.",
+    tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "REST APIs", "GitHub Pages"],
   },
   {
-    period: "2025–2026",
-    role: "IBM Professional Certificate Learner",
-    organization: "IBM · Coursera",
+    period: "Ongoing",
+    role: "Independent Software Developer",
+    organization: "Self-Directed Project Development · Oman / Remote",
     description:
-      "Completed three IBM Professional Certificates comprising 39 courses across mobile application development, AI development, and full-stack software development.",
-    tags: ["Mobile", "AI", "Full Stack", "Cloud", "Capstones"],
+      "Design and build web and mobile applications using Flutter, Android Studio, React, Next.js, Flask, Python, and Firebase while integrating authentication, real-time data, REST APIs, automated email services, and AI-assisted development workflows.",
+    tags: ["Flutter", "React", "Next.js", "Flask", "Firebase", "GitHub"],
   },
 ];
 
@@ -455,28 +505,72 @@ export const certificates = [
     issuer: "Qwetrum Technologies",
     date: "June 2026",
     courses: "4-week internship",
+    category: "Internship",
+    skills: ["Responsive Web Development", "JavaScript", "APIs", "E-Commerce"],
     file: "/documents/Qwetrum-Web-Development-Internship.pdf",
   },
   {
     title: "IBM iOS & Android Mobile App Developer",
-    issuer: "IBM",
+    issuer: "IBM Skills Network",
     date: "February 2026",
     courses: "14 courses",
+    category: "Mobile",
+    skills: ["Flutter", "Dart", "React Native", "Swift", "Mobile UI/UX"],
     file: "/documents/IBM-Mobile-App-Developer.pdf",
   },
   {
     title: "IBM AI Developer Professional Certificate",
-    issuer: "IBM",
+    issuer: "IBM Skills Network",
     date: "January 2026",
     courses: "10 courses",
+    category: "AI",
+    skills: ["Generative AI", "Prompt Engineering", "Python", "Flask", "AI Applications"],
     file: "/documents/IBM-AI-Developer.pdf",
   },
   {
     title: "IBM Full Stack Software Developer",
-    issuer: "IBM",
+    issuer: "IBM Skills Network",
     date: "June 2025",
     courses: "15 courses",
+    category: "Full Stack",
+    skills: ["React", "Node.js", "Django", "Flask", "Docker", "Kubernetes"],
     file: "/documents/IBM-Full-Stack-Developer.pdf",
+  },
+  {
+    title: "Game Design and Development with Unity",
+    issuer: "Michigan State University",
+    date: "January 29, 2025",
+    courses: "5 courses",
+    category: "Game",
+    skills: ["Unity", "C#", "2D Games", "3D Games", "Game Capstone"],
+    file: "/documents/Game-Design-and-Development-with-Unity.pdf",
+  },
+  {
+    title: "Google Business Intelligence Professional Certificate",
+    issuer: "Google / Coursera",
+    date: "July 22, 2024",
+    courses: "3 courses",
+    category: "Business Intelligence",
+    skills: ["Data Models", "Data Pipelines", "Dashboards", "Reporting", "Stakeholder Insights"],
+    file: "/documents/Google-Business-Intelligence.pdf",
+  },
+  {
+    title: "Google Advanced Data Analytics Professional Certificate",
+    issuer: "Google / Coursera",
+    date: "July 14, 2024",
+    courses: "7 courses",
+    category: "Data Analytics",
+    skills: ["Python", "Statistics", "Regression", "Machine Learning", "Predictive Modelling"],
+    file: "/documents/Google-Advanced-Data-Analytics.pdf",
+  },
+  {
+    title: "Google Data Analytics Professional Certificate",
+    issuer: "Google / Coursera",
+    date: "September 14, 2023",
+    courses: "8 courses",
+    category: "Data Analytics",
+    skills: ["Spreadsheets", "SQL", "Tableau", "R", "Data Visualisation"],
+    file: "/documents/Google-Data-Analytics.pdf",
   },
 ];
 
@@ -486,4 +580,5 @@ export const contactLinks = {
   whatsapp: "https://api.whatsapp.com/send?phone=96892287421",
   github: "https://github.com/GMAC1231",
   linkedin: "https://www.linkedin.com/in/abdullah-muhammad-30948623b/",
+  itch: "https://abdullah0364.itch.io/",
 };

@@ -11,8 +11,8 @@ export default function ExperienceSection() {
         <Reveal>
           <SectionHeading
             eyebrow="Experience & growth"
-            title="Learning through internships, certificates, and project delivery."
-            description="My experience is built around hands-on work: completing structured programs, building real projects, debugging problems, and publishing the final result."
+            title="Growing through internships, independent development, credentials, and real delivery."
+            description="My experience combines two remote internships, ongoing independent software development, professional credentials, project delivery, debugging, documentation, and deployment."
           />
         </Reveal>
 
@@ -20,7 +20,7 @@ export default function ExperienceSection() {
           <Reveal className="experience-summary-card">
             <span className="experience-summary-icon"><BriefcaseBusiness size={28} /></span>
             <p className="experience-summary-label">Current direction</p>
-            <h3>Frontend developer focused on responsive applications and Firebase-connected products.</h3>
+            <h3>Software and mobile application developer working across web, cloud, data, AI, and game-development projects.</h3>
             <ul>
               <li><CheckCircle2 size={17} /> Open to remote, part-time, and full-time roles</li>
               <li><CheckCircle2 size={17} /> Comfortable with independent and collaborative work</li>

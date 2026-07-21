@@ -66,7 +66,7 @@ export default function Header() {
           </span>
           <span className="brand-copy">
             <strong>Abdullah Muhammad</strong>
-            <small>Frontend · Web · Mobile</small>
+            <small>Software · Web · Mobile</small>
           </span>
         </Link>
 

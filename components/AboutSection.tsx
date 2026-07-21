@@ -28,8 +28,8 @@ export default function AboutSection() {
         <Reveal>
           <SectionHeading
             eyebrow="About me"
-            title="A developer who connects design, functionality, and real delivery."
-            description="My work combines frontend engineering, mobile development, backend integration, cloud data, documentation, and deployment. I enjoy turning a requirement into a product that people can actually use."
+            title="A multidisciplinary developer connecting software, data, AI, and interactive experiences."
+            description="My work combines frontend and mobile engineering, backend integration, Firebase, analytics, AI-assisted development, Unity game production, documentation, and deployment."
           />
         </Reveal>
 
@@ -38,9 +38,7 @@ export default function AboutSection() {
             <div className="about-story-number">01</div>
             <div>
               <p className="large-copy">
-                I focus on building <strong>responsive interfaces</strong>, <strong>Firebase-connected applications</strong>,
-                cross-platform mobile apps, and practical digital systems. I care about visual clarity, reusable code,
-                secure user data, and making the final project easy to demonstrate and deploy.
+                I focus on building <strong>responsive interfaces</strong>, <strong>Firebase-connected applications</strong>, cross-platform mobile apps, Python and Flask services, data-driven dashboards, and Unity game prototypes. I care about visual clarity, reusable code, secure user data, and making the final result easy to test, document, and deploy.
               </p>
               <Link className="text-link" href="/#contact">
                 Start a conversation <ArrowUpRight size={17} />

@@ -16,6 +16,7 @@ import {
   Droplets,
   Flower2,
   FolderKanban,
+  Gamepad2,
   Gauge,
   LayoutDashboard,
   Leaf,
@@ -60,6 +61,7 @@ const icons = {
   flower: Flower2,
   meditation: MoonStar,
   food: UtensilsCrossed,
+  game: Gamepad2,
 };
 
 export default function ProjectVisual({

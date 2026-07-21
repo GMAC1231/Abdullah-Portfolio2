@@ -1,7 +1,9 @@
 import {
+  BarChart3,
   Braces,
   Database,
   ServerCog,
+  Gamepad2,
   Smartphone,
   Sparkles,
   Wrench,
@@ -16,6 +18,8 @@ const iconMap = {
   mobile: Smartphone,
   server: ServerCog,
   database: Database,
+  analytics: BarChart3,
+  game: Gamepad2,
   tools: Wrench,
   sparkles: Sparkles,
 };
@@ -27,8 +31,8 @@ export default function SkillsSection() {
         <Reveal>
           <SectionHeading
             eyebrow="Technical capabilities"
-            title="A practical toolkit across frontend, mobile, backend, and cloud."
-            description="I choose technologies based on the product requirement and focus on connecting them into a clear, maintainable workflow."
+            title="A practical toolkit across software, mobile, data, AI, and game development."
+            description="I work across responsive interfaces, mobile applications, backend services, cloud data, analytics, AI-assisted workflows, and Unity game development."
             centered
           />
         </Reveal>

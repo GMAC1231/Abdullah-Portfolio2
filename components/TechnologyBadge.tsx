@@ -1,6 +1,7 @@
 import type { CSSProperties, ComponentType } from "react";
 import type { IconType } from "react-icons";
 import {
+  BarChart3,
   Braces,
   Cloud,
   Code2,
@@ -16,8 +17,10 @@ import { FaGithub, FaJava } from "react-icons/fa";
 import {
   SiAndroidstudio,
   SiBootstrap,
+  SiDotnet,
   SiCss,
   SiDart,
+  SiDocker,
   SiExpo,
   SiFirebase,
   SiFlask,
@@ -31,12 +34,16 @@ import {
   SiNodedotjs,
   SiOverleaf,
   SiPython,
+  SiR,
   SiReact,
   SiSpringboot,
+  SiSwift,
   SiTailwindcss,
   SiTypescript,
+  SiUnity,
   SiVercel,
   SiFlutter,
+  SiKubernetes,
 } from "react-icons/si";
 import { RiOpenaiFill } from "react-icons/ri";
 import { VscCode } from "react-icons/vsc";
@@ -66,6 +73,11 @@ const technologyMap: Record<string, TechnologyConfig> = {
   expo: { icon: SiExpo, color: "#f8fafc", symbol: "△" },
   "android studio": { icon: SiAndroidstudio, color: "#3ddc84", symbol: "🤖" },
   java: { icon: FaJava, color: "#f89820", symbol: "☕" },
+  swift: { icon: SiSwift, color: "#f05138", symbol: "SW" },
+  unity: { icon: SiUnity, color: "#f8fafc", symbol: "U" },
+  "c#": { icon: SiDotnet, color: "#9b4f96", symbol: "C#" },
+  r: { icon: SiR, color: "#276dc3", symbol: "R" },
+  tableau: { icon: BarChart3, color: "#e97627", symbol: "T" },
   python: { icon: SiPython, color: "#ffd43b", symbol: "🐍" },
   flask: { icon: SiFlask, color: "#f8fafc", symbol: "🧪" },
   "spring boot": { icon: SiSpringboot, color: "#6db33f", symbol: "🍃" },
@@ -86,6 +98,8 @@ const technologyMap: Record<string, TechnologyConfig> = {
   latex: { icon: SiLatex, color: "#3d6117", symbol: "TeX" },
   overleaf: { icon: SiOverleaf, color: "#47a141", symbol: "🍃" },
   vercel: { icon: SiVercel, color: "#f8fafc", symbol: "▲" },
+  docker: { icon: SiDocker, color: "#2496ed", symbol: "🐳" },
+  kubernetes: { icon: SiKubernetes, color: "#326ce5", symbol: "K8s" },
   "rest apis": { icon: Server, color: "#a78bfa", symbol: "API" },
   "google smtp": { icon: Mail, color: "#ea4335", symbol: "✉" },
   "mobile ui": { icon: Smartphone, color: "#f472b6", symbol: "📱" },

@@ -1,9 +1,10 @@
 "use client";
 
 import { Award, ExternalLink, FileText, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import TechnologyBadge from "@/components/TechnologyBadge";
 import { certificates } from "@/data/portfolio";
 import { withBasePath } from "@/lib/paths";
 
@@ -11,6 +12,17 @@ type SelectedCertificate = (typeof certificates)[number] | null;
 
 export default function CertificatesSection() {
   const [selected, setSelected] = useState<SelectedCertificate>(null);
+  const [filter, setFilter] = useState("All");
+
+  const filters = useMemo(
+    () => ["All", ...Array.from(new Set(certificates.map((certificate) => certificate.category)))],
+    [],
+  );
+
+  const filteredCertificates = useMemo(
+    () => filter === "All" ? certificates : certificates.filter((certificate) => certificate.category === filter),
+    [filter],
+  );
 
   useEffect(() => {
     document.body.style.overflow = selected ? "hidden" : "";
@@ -24,28 +36,50 @@ export default function CertificatesSection() {
       <div className="site-container">
         <Reveal>
           <SectionHeading
-            eyebrow="Professional certificates"
-            title="Professional certificates and internship achievements."
-            description="Credentials include a Qwetrum Technologies Web Development remote internship and three IBM Professional Certificates covering 39 courses in mobile, AI, and full-stack development."
+            eyebrow="Professional credentials"
+            title="Seven major credentials covering 62 courses across software, mobile, AI, data, BI, and games."
+            description="My professional learning includes IBM, Google, and Michigan State University credentials, together with a completed remote web-development internship."
             centered
           />
         </Reveal>
 
+        <Reveal>
+          <div className="project-filter certificate-filter" aria-label="Certificate filters">
+            {filters.map((item) => (
+              <button
+                type="button"
+                className={filter === item ? "active" : ""}
+                onClick={() => setFilter(item)}
+                key={item}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </Reveal>
+
         <div className="certificate-grid">
-          {certificates.map((certificate, index) => (
-            <Reveal className="certificate-card" delay={index * 0.08} key={certificate.title}>
+          {filteredCertificates.map((certificate, index) => (
+            <Reveal className="certificate-card" delay={(index % 4) * 0.06} key={certificate.title}>
               <div className="certificate-card-top">
                 <span className="certificate-icon"><Award size={26} /></span>
-                <span className="certificate-number">0{index + 1}</span>
+                <span className="certificate-number">{String(index + 1).padStart(2, "0")}</span>
               </div>
               <p>{certificate.issuer} · {certificate.date}</p>
               <h3>{certificate.title}</h3>
+              <div className="certificate-skills">
+                {certificate.skills.slice(0, 5).map((skill) => (
+                  <TechnologyBadge key={skill} name={skill} compact />
+                ))}
+              </div>
               <div className="certificate-divider" />
               <div className="certificate-footer">
                 <span><FileText size={16} /> {certificate.courses}</span>
-                <button type="button" onClick={() => setSelected(certificate)}>
-                  Preview <ExternalLink size={15} />
-                </button>
+                <div className="certificate-actions">
+                  <button type="button" onClick={() => setSelected(certificate)}>
+                    Preview <ExternalLink size={15} />
+                  </button>
+                </div>
               </div>
             </Reveal>
           ))}

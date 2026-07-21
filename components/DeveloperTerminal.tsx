@@ -693,7 +693,7 @@ export default function DeveloperTerminal() {
       case "experience":
         append(
           "output",
-          "SoftGrowTech — Frontend Development Internship\n  Final project: TaskFlow Firebase Web App\nQwetrum Technologies — Web Development Internship\n  Capstone: Complete E-Commerce Website\nIBM — 3 Professional Certificates / 39 completed courses",
+          "SoftGrowTech — Frontend Development Internship\n  Final project: TaskFlow Firebase Web App\nQwetrum Technologies — Web Development Internship\n  Capstone: Complete E-Commerce Website\nIndependent Software Developer — Ongoing self-directed delivery\nCredentials — 7 major programs / 62 completed courses",
         );
         break;
       case "internships":
@@ -737,6 +737,11 @@ export default function DeveloperTerminal() {
         break;
       case "open": {
         const target = args.join(" ");
+
+        if (["games", "game-portfolio", "itch", "itch.io"].includes(target)) {
+          openUrl(contactLinks.itch, "itch.io Game Portfolio");
+          break;
+        }
 
         if (["monopoly", "monopoly-guide", "rules", "rule-guide"].includes(target)) {
           openUrl("https://gmac1231.github.io/Monopoly/", "Monopoly Rules Guide");

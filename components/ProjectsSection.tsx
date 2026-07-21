@@ -27,6 +27,7 @@ const filters: Array<"All" | ProjectCategory> = [
   "Firebase",
   "Guide",
   "Portfolio",
+  "Game",
 ];
 
 export default function ProjectsSection() {
@@ -135,8 +136,16 @@ export default function ProjectsSection() {
                   href={featured.liveUrl}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label={
+                    featured.categories.includes("Game")
+                      ? `Open ${featured.title} games on itch.io`
+                      : `Open ${featured.title} live project`
+                  }
                 >
-                  Live project <ExternalLink size={17} />
+                  {featured.categories.includes("Game")
+                    ? "View games"
+                    : "Live project"}{" "}
+                  <ExternalLink size={17} />
                 </a>
               ) : featured.deploymentUrl ? (
                 <a
@@ -260,8 +269,16 @@ export default function ProjectsSection() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noreferrer"
+                        aria-label={
+                          project.categories.includes("Game")
+                            ? `Open ${project.title} games on itch.io`
+                            : `Open ${project.title} live project`
+                        }
                       >
-                        Live project <ExternalLink size={15} />
+                        {project.categories.includes("Game")
+                          ? "View games"
+                          : "Live project"}{" "}
+                        <ExternalLink size={15} />
                       </a>
                     ) : project.deploymentUrl ? (
                       <a

@@ -88,9 +88,15 @@ function ProjectActions({
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Open ${project.title} live project`}
+            aria-label={
+              project.categories.includes("Game")
+                ? `Open ${project.title} games on itch.io`
+                : `Open ${project.title} live project`
+            }
           >
-            Live project
+            {project.categories.includes("Game")
+              ? "View games"
+              : "Live project"}
             <ExternalLink size={15} aria-hidden="true" />
           </a>
         ) : null}
@@ -134,9 +140,15 @@ function ProjectActions({
           href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Open ${project.title} live project`}
+          aria-label={
+            project.categories.includes("Game")
+              ? `Open ${project.title} games on itch.io`
+              : `Open ${project.title} live project`
+          }
         >
-          View live project
+          {project.categories.includes("Game")
+            ? "View games on itch.io"
+            : "View live project"}
           <ExternalLink size={17} aria-hidden="true" />
         </a>
       ) : null}

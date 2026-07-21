@@ -8,6 +8,7 @@ import {
   ArrowUpRight,
   CheckCircle2,
   Download,
+  Gamepad2,
   Mail,
   MapPin,
   Sparkles,
@@ -21,8 +22,8 @@ import { withBasePath } from "@/lib/paths";
 
 const stats = [
   { value: String(projects.length), label: "Portfolio projects" },
-  { value: "39", label: "IBM courses" },
-  { value: "4", label: "Certificates & credentials" },
+  { value: "62", label: "Credential courses" },
+  { value: "7", label: "Major credentials" },
   { value: "2", label: "Remote internships" },
 ];
 
@@ -42,17 +43,15 @@ export default function Hero() {
         >
           <div className="availability-pill">
             <span className="availability-dot" />
-            Open to frontend, web, and mobile opportunities
+            Open to software, web, mobile, data, and game-development opportunities
           </div>
 
-          <p className="hero-kicker"><Sparkles size={15} /> Frontend · Web · Mobile Application Developer</p>
+          <p className="hero-kicker"><Sparkles size={15} /> Software · Web · Mobile Application Developer</p>
           <h1>
             I build digital products that feel <span>clear, fast, and complete.</span>
           </h1>
           <p className="hero-description">
-            I’m <strong>Abdullah Muhammad</strong>, a developer based in Oman. I create responsive web applications,
-            cross-platform mobile experiences, Firebase-powered systems, and practical software solutions with a
-            strong focus on clean UI, reusable components, and reliable user workflows.
+            I’m <strong>Abdullah Muhammad</strong>, a software developer based in Oman. I build responsive React and Next.js applications, cross-platform Flutter experiences, Firebase and Flask services, data-driven solutions, and Unity game prototypes with a strong focus on maintainable code and reliable user workflows.
           </p>
 
           <div className="hero-actions">
@@ -83,6 +82,9 @@ export default function Hero() {
             </a>
             <a href={contactLinks.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
               <FaLinkedinIn size={18} />
+            </a>
+            <a href={contactLinks.itch} target="_blank" rel="noreferrer" aria-label="itch.io game portfolio">
+              <Gamepad2 size={19} />
             </a>
             <a href={`mailto:${contactLinks.email}`} aria-label="Email">
               <Mail size={19} />
@@ -122,7 +124,7 @@ export default function Hero() {
             <div className="profile-card-footer">
               <div>
                 <small>Current focus</small>
-                <strong>React · Next.js · Firebase</strong>
+                <strong>React · Flutter · Firebase · Unity</strong>
               </div>
               <a href={contactLinks.linkedin} target="_blank" rel="noreferrer" aria-label="Open LinkedIn">
                 <ArrowUpRight size={19} />

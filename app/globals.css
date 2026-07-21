@@ -2005,7 +2005,7 @@ svg {
 }
 
 .certificate-card {
-  min-height: 330px;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
   padding: 29px;
@@ -2057,6 +2057,13 @@ svg {
   line-height: 1.2;
 }
 
+.certificate-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 18px;
+}
+
 .certificate-divider {
   flex: 1;
   min-height: 30px;
@@ -2072,7 +2079,8 @@ svg {
 }
 
 .certificate-footer span,
-.certificate-footer button {
+.certificate-footer button,
+.certificate-footer a {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -2081,14 +2089,23 @@ svg {
   font-weight: 710;
 }
 
-.certificate-footer button {
+.certificate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.certificate-footer button,
+.certificate-footer a {
   padding: 0;
   border: 0;
   color: var(--ink);
   background: transparent;
 }
 
-.certificate-footer button:hover {
+.certificate-footer button:hover,
+.certificate-footer a:hover {
   color: var(--green);
 }
 

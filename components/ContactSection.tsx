@@ -5,6 +5,7 @@ import {
   ArrowUpRight,
   Check,
   Copy,
+  Gamepad2,
   Mail,
   MapPin,
   MessageCircle,
@@ -135,6 +136,15 @@ export default function ContactSection() {
             >
               <FaLinkedinIn size={17} />
               LinkedIn
+            </a>
+
+            <a
+              href={contactLinks.itch}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Gamepad2 size={17} />
+              Game Portfolio
             </a>
           </div>
         </Reveal>
