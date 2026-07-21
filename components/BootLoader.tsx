@@ -273,6 +273,11 @@ export default function BootLoader() {
 
     const activeTheme = readActiveTheme();
 
+    // Hide the portfolio immediately while React prepares the next
+    // themed loader frame. This prevents a flash of the new layout.
+    document.documentElement.classList.add("devos-booting");
+    document.body.classList.add("devos-booting");
+
     activeThemeRef.current = activeTheme;
     setTheme(activeTheme);
     progressRef.current = 0;
@@ -292,50 +297,27 @@ export default function BootLoader() {
       setTheme(initialTheme);
     });
 
-    const activateThemeLoader = (
-      source?: "automatic" | "manual",
-    ) => {
+    const activateThemeLoader = () => {
       const nextTheme = readActiveTheme();
 
+      // The MutationObserver and the custom event can both report the
+      // same theme change. The active-theme guard ensures that every
+      // change starts exactly one themed loading sequence.
       if (nextTheme === activeThemeRef.current) {
         return;
       }
 
       activeThemeRef.current = nextTheme;
       setTheme(nextTheme);
-
-      /*
-       * Automatic rotation changes the page smoothly without
-       * blocking visitors with a full boot sequence every 30 seconds.
-       * Manual theme changes still replay the themed loader.
-       */
-      if (source === "automatic") {
-        return;
-      }
-
       replay();
     };
 
     const handleThemeMutation = () => {
-      const source =
-        document.documentElement.dataset
-          .themeChangeSource;
-
-      activateThemeLoader(
-        source === "automatic"
-          ? "automatic"
-          : "manual",
-      );
+      activateThemeLoader();
     };
 
-    const handleThemeEvent = (event: Event) => {
-      const customEvent = event as CustomEvent<{
-        source?: "automatic" | "manual";
-      }>;
-
-      activateThemeLoader(
-        customEvent.detail?.source,
-      );
+    const handleThemeEvent = () => {
+      activateThemeLoader();
     };
 
     const observer = new MutationObserver(
