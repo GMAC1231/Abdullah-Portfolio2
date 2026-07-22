@@ -9,9 +9,11 @@ import {
   type ThemeMode,
 } from "@/lib/themeRuntime";
 
-const AUTO_THEME_INTERVAL_MS = 30_000;
-const RETRY_WHILE_BOOTING_MS = 5_000;
-const TRANSITION_DURATION_MS = 1_000;
+const DESKTOP_INTERVAL_MS = 60_000;
+const LOW_POWER_INTERVAL_MS = 90_000;
+const RETRY_DELAY_MS = 8_000;
+const RECENT_INTERACTION_MS = 10_000;
+const TRANSITION_DURATION_MS = 550;
 
 type DevosSettings = {
   autoThemeEnabled?: boolean;
@@ -49,20 +51,46 @@ function getNextTheme(currentTheme: ThemeMode) {
   return THEMES[(currentIndex + 1) % THEMES.length];
 }
 
+function isLowPowerDevice() {
+  const nav = navigator as Navigator & {
+    deviceMemory?: number;
+    connection?: {
+      saveData?: boolean;
+    };
+  };
+
+  return (
+    window.matchMedia("(max-width: 760px)").matches ||
+    (nav.deviceMemory !== undefined && nav.deviceMemory <= 4) ||
+    navigator.hardwareConcurrency <= 4 ||
+    nav.connection?.saveData === true
+  );
+}
+
 export default function AutoThemeController() {
   useEffect(() => {
     const settings = readSettings();
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
-    // Automatic theme rotation is enabled by default. It can be
-    // disabled later by saving autoThemeEnabled: false in the
-    // existing portfolio-devos-settings object.
-    if (settings.autoThemeEnabled === false) {
+    // Respect accessibility and data-saving preferences. Manual
+    // theme switching remains available through the theme button.
+    if (
+      settings.autoThemeEnabled === false ||
+      reducedMotion
+    ) {
       return;
     }
 
     const root = document.documentElement;
+    const interval = isLowPowerDevice()
+      ? LOW_POWER_INTERVAL_MS
+      : DESKTOP_INTERVAL_MS;
+
     let timerId: number | null = null;
     let cleanupTimerId: number | null = null;
+    let lastInteractionAt = performance.now();
 
     const clearRotationTimer = () => {
       if (timerId !== null) {
@@ -78,17 +106,24 @@ export default function AutoThemeController() {
       }
     };
 
-    const scheduleNextTheme = (
-      delay = AUTO_THEME_INTERVAL_MS,
-    ) => {
+    const noteInteraction = () => {
+      lastInteractionAt = performance.now();
+    };
+
+    const scheduleNextTheme = (delay = interval) => {
       clearRotationTimer();
 
       timerId = window.setTimeout(() => {
+        const recentlyInteracting =
+          performance.now() - lastInteractionAt <
+          RECENT_INTERACTION_MS;
+
         if (
           document.hidden ||
+          recentlyInteracting ||
           root.classList.contains("devos-booting")
         ) {
-          scheduleNextTheme(RETRY_WHILE_BOOTING_MS);
+          scheduleNextTheme(RETRY_DELAY_MS);
           return;
         }
 
@@ -96,6 +131,8 @@ export default function AutoThemeController() {
           getCurrentTheme(),
         );
 
+        // BootLoader uses this marker to display the lightweight
+        // transition loader rather than the longer first-load intro.
         root.dataset.themeChangeSource = "automatic";
         root.classList.add(
           "devos-auto-theme-transition",
@@ -131,9 +168,8 @@ export default function AutoThemeController() {
           }
         }, TRANSITION_DURATION_MS);
 
-        // Automatic changes are intentionally not written to
-        // localStorage. A visitor's manually selected theme remains
-        // their starting theme the next time the portfolio opens.
+        // Automatic rotation does not overwrite the visitor's saved
+        // manual theme preference.
         void nextLayout;
         scheduleNextTheme();
       }, delay);
@@ -143,9 +179,8 @@ export default function AutoThemeController() {
       const customEvent =
         event as CustomEvent<ThemeChangeDetail>;
 
-      // Reset the countdown after a manual selection so the chosen
-      // theme remains visible for a full interval.
       if (customEvent.detail?.source !== "automatic") {
+        noteInteraction();
         scheduleNextTheme();
       }
     };
@@ -156,6 +191,7 @@ export default function AutoThemeController() {
         return;
       }
 
+      noteInteraction();
       scheduleNextTheme();
     };
 
@@ -163,6 +199,13 @@ export default function AutoThemeController() {
       "devos-theme-change",
       handleThemeChange,
     );
+    window.addEventListener("pointerdown", noteInteraction, {
+      passive: true,
+    });
+    window.addEventListener("keydown", noteInteraction);
+    window.addEventListener("scroll", noteInteraction, {
+      passive: true,
+    });
 
     document.addEventListener(
       "visibilitychange",
@@ -189,6 +232,18 @@ export default function AutoThemeController() {
       window.removeEventListener(
         "devos-theme-change",
         handleThemeChange,
+      );
+      window.removeEventListener(
+        "pointerdown",
+        noteInteraction,
+      );
+      window.removeEventListener(
+        "keydown",
+        noteInteraction,
+      );
+      window.removeEventListener(
+        "scroll",
+        noteInteraction,
       );
 
       document.removeEventListener(

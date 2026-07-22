@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type ThemeName = "matrix" | "cyan" | "purple" | "ember" | "red";
+type BootMode = "full" | "compact";
 
 type MatrixDrop = {
   x: number;
@@ -58,8 +59,9 @@ type ThemeProfile = {
   stages: Array<{ at: number; label: string }>;
 };
 
-const BOOT_DURATION = 4300;
-const EXIT_DURATION = 720;
+const FULL_BOOT_DURATION = 2800;
+const COMPACT_BOOT_DURATION = 950;
+const EXIT_DURATION = 360;
 const VALID_THEMES: ThemeName[] = [
   "matrix",
   "cyan",
@@ -240,6 +242,7 @@ export default function BootLoader() {
   const activeThemeRef = useRef<ThemeName>("matrix");
 
   const [theme, setTheme] = useState<ThemeName>("matrix");
+  const [bootMode, setBootMode] = useState<BootMode>("full");
   const [visible, setVisible] = useState(true);
   const [leaving, setLeaving] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -266,27 +269,34 @@ export default function BootLoader() {
     }, EXIT_DURATION);
   }, []);
 
-  const replay = useCallback(() => {
-    if (exitTimerRef.current) {
-      window.clearTimeout(exitTimerRef.current);
-    }
+  const replay = useCallback(
+    (source: "automatic" | "manual" = "manual") => {
+      if (exitTimerRef.current) {
+        window.clearTimeout(exitTimerRef.current);
+      }
 
-    const activeTheme = readActiveTheme();
+      const activeTheme = readActiveTheme();
+      const nextMode: BootMode =
+        source === "automatic" ? "compact" : "full";
 
-    // Hide the portfolio immediately while React prepares the next
-    // themed loader frame. This prevents a flash of the new layout.
-    document.documentElement.classList.add("devos-booting");
-    document.body.classList.add("devos-booting");
+      // Hide the portfolio immediately while React prepares the next
+      // themed loader frame. The compact mode keeps automatic changes
+      // smooth without replaying the expensive full intro.
+      document.documentElement.classList.add("devos-booting");
+      document.body.classList.add("devos-booting");
 
-    activeThemeRef.current = activeTheme;
-    setTheme(activeTheme);
-    progressRef.current = 0;
-    leavingRef.current = false;
-    setProgress(0);
-    setLeaving(false);
-    setVisible(true);
-    setRunId((current) => current + 1);
-  }, []);
+      activeThemeRef.current = activeTheme;
+      setTheme(activeTheme);
+      setBootMode(nextMode);
+      progressRef.current = 0;
+      leavingRef.current = false;
+      setProgress(0);
+      setLeaving(false);
+      setVisible(true);
+      setRunId((current) => current + 1);
+    },
+    [],
+  );
 
   useEffect(() => {
     const initialTheme = readActiveTheme();
@@ -297,7 +307,9 @@ export default function BootLoader() {
       setTheme(initialTheme);
     });
 
-    const activateThemeLoader = () => {
+    const activateThemeLoader = (
+      source: "automatic" | "manual",
+    ) => {
       const nextTheme = readActiveTheme();
 
       // The MutationObserver and the custom event can both report the
@@ -308,16 +320,29 @@ export default function BootLoader() {
       }
 
       activeThemeRef.current = nextTheme;
-      setTheme(nextTheme);
-      replay();
+      replay(source);
     };
 
     const handleThemeMutation = () => {
-      activateThemeLoader();
+      const source =
+        document.documentElement.dataset
+          .themeChangeSource === "automatic"
+          ? "automatic"
+          : "manual";
+
+      activateThemeLoader(source);
     };
 
-    const handleThemeEvent = () => {
-      activateThemeLoader();
+    const handleThemeEvent = (event: Event) => {
+      const customEvent = event as CustomEvent<{
+        source?: "automatic" | "manual";
+      }>;
+
+      activateThemeLoader(
+        customEvent.detail?.source === "automatic"
+          ? "automatic"
+          : "manual",
+      );
     };
 
     const observer = new MutationObserver(
@@ -346,7 +371,7 @@ export default function BootLoader() {
   }, [replay]);
 
   useEffect(() => {
-    const handleReplay = () => replay();
+    const handleReplay = () => replay("manual");
     window.addEventListener("devos-replay-boot", handleReplay);
 
     return () => {
@@ -408,6 +433,21 @@ export default function BootLoader() {
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
+
+    const nav = navigator as Navigator & {
+      deviceMemory?: number;
+    };
+    const lowPower =
+      width < 760 ||
+      (nav.deviceMemory !== undefined &&
+        nav.deviceMemory <= 4) ||
+      navigator.hardwareConcurrency <= 4;
+    const targetFrameMs = reducedMotion
+      ? 80
+      : lowPower
+        ? 42
+        : 32;
+    let lastDrawAt = 0;
 
     let matrixDrops: MatrixDrop[] = [];
     let nodes: NetworkNode[] = [];
@@ -475,7 +515,10 @@ export default function BootLoader() {
     }
 
     function resize() {
-      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      const pixelRatio = Math.min(
+        window.devicePixelRatio || 1,
+        lowPower ? 1 : 1.35,
+      );
 
       width = window.innerWidth;
       height = window.innerHeight;
@@ -489,7 +532,7 @@ export default function BootLoader() {
       drawingContext.textAlign = "center";
       drawingContext.textBaseline = "middle";
 
-      const spacing = width < 700 ? 24 : 29;
+      const spacing = width < 700 ? 30 : lowPower ? 34 : 31;
 
       matrixDrops = Array.from(
         { length: Math.ceil(width / spacing) + 1 },
@@ -497,22 +540,22 @@ export default function BootLoader() {
       );
 
       nodes = Array.from(
-        { length: width < 700 ? 24 : 42 },
+        { length: width < 700 ? 16 : lowPower ? 24 : 34 },
         createNode,
       );
 
       stars = Array.from(
-        { length: width < 700 ? 70 : 135 },
+        { length: width < 700 ? 42 : lowPower ? 64 : 92 },
         createStar,
       );
 
       embers = Array.from(
-        { length: width < 700 ? 38 : 72 },
+        { length: width < 700 ? 22 : lowPower ? 34 : 50 },
         () => createEmber(true),
       );
 
       redParticles = Array.from(
-        { length: width < 700 ? 30 : 58 },
+        { length: width < 700 ? 18 : lowPower ? 28 : 42 },
         createRedParticle,
       );
     }
@@ -957,16 +1000,31 @@ export default function BootLoader() {
       drawingContext.shadowBlur = 0;
     }
 
+    const duration = reducedMotion
+      ? 900
+      : bootMode === "compact"
+        ? COMPACT_BOOT_DURATION
+        : FULL_BOOT_DURATION;
+
     function draw(time: number) {
+      if (
+        document.visibilityState !== "visible" ||
+        time - lastDrawAt < targetFrameMs
+      ) {
+        frameId = window.requestAnimationFrame(draw);
+        return;
+      }
+
+      lastDrawAt = time;
+
       const elapsed = time - startedAt;
       const deltaSeconds = Math.min(
         (time - previousTime) / 1000,
-        0.05,
+        0.06,
       );
 
       previousTime = time;
 
-      const duration = reducedMotion ? 1400 : BOOT_DURATION;
       const rawProgress = Math.min(1, elapsed / duration);
       const easedProgress =
         1 - Math.pow(1 - rawProgress, 2.2);
@@ -976,7 +1034,13 @@ export default function BootLoader() {
         Math.floor(easedProgress * 100),
       );
 
-      if (progressValue !== lastProgress) {
+      const progressStep =
+        bootMode === "compact" ? 8 : 3;
+
+      if (
+        progressValue === 100 ||
+        progressValue - lastProgress >= progressStep
+      ) {
         lastProgress = progressValue;
         progressRef.current = progressValue;
         setProgress(progressValue);
@@ -1018,7 +1082,7 @@ export default function BootLoader() {
       if (document.visibilityState === "visible") {
         startedAt =
           performance.now() -
-          (progressRef.current / 100) * BOOT_DURATION;
+          (progressRef.current / 100) * duration;
 
         previousTime = performance.now();
       }
@@ -1041,7 +1105,7 @@ export default function BootLoader() {
         handleVisibilityChange,
       );
     };
-  }, [finish, runId, theme, visible]);
+  }, [bootMode, finish, runId, theme, visible]);
 
   useEffect(() => {
     return () => {
@@ -1074,6 +1138,7 @@ export default function BootLoader() {
       className={[
         "theme-boot",
         `theme-boot--${theme}`,
+        `theme-boot--${bootMode}`,
         leaving ? "is-leaving" : "",
       ]
         .filter(Boolean)

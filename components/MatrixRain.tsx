@@ -314,7 +314,29 @@ export default function MatrixRain() {
     let fontSize = 18;
     let theme = readTheme();
     let weather = readWeather();
-    let enabled = document.documentElement.dataset.matrix !== "off";
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const nav = navigator as Navigator & {
+      deviceMemory?: number;
+    };
+    const lowPower =
+      window.innerWidth < 760 ||
+      (nav.deviceMemory !== undefined &&
+        nav.deviceMemory <= 4) ||
+      navigator.hardwareConcurrency <= 4;
+    const targetFrameMs = reducedMotion
+      ? 100
+      : lowPower
+        ? 42
+        : 32;
+
+    let enabled =
+      document.documentElement.dataset.matrix !== "off" &&
+      !reducedMotion;
+    let lastDrawAt = 0;
+    let resizeTimerId: number | null = null;
 
     let matrixColumns: MatrixColumn[] = [];
     let cyanNodes: CyanNode[] = [];
@@ -330,14 +352,24 @@ export default function MatrixRain() {
     let lightningUntil = 0;
 
     function rebuildScene() {
+      const qualityScale = lowPower ? 0.5 : 0.72;
       const matrixColumnCount = Math.ceil(width / fontSize) + 1;
-      const cyanNodeCount = Math.min(74, Math.max(34, Math.floor(width / 18)));
-      const purpleStarCount = Math.min(
-        145,
-        Math.max(70, Math.floor(width / 9)),
+      const cyanNodeCount = Math.round(
+        Math.min(64, Math.max(24, Math.floor(width / 22))) *
+          qualityScale,
       );
-      const purpleOrbiterCount = width < 700 ? 8 : 15;
-      const emberCount = Math.min(120, Math.max(58, Math.floor(width / 11)));
+      const purpleStarCount = Math.round(
+        Math.min(110, Math.max(44, Math.floor(width / 13))) *
+          qualityScale,
+      );
+      const purpleOrbiterCount = Math.max(
+        4,
+        Math.round((width < 700 ? 7 : 12) * qualityScale),
+      );
+      const emberCount = Math.round(
+        Math.min(88, Math.max(38, Math.floor(width / 16))) *
+          qualityScale,
+      );
 
       matrixColumns = Array.from({ length: matrixColumnCount }, (_, index) =>
         createMatrixColumn(index, fontSize, height),
@@ -361,29 +393,52 @@ export default function MatrixRain() {
         createEmberParticle(width, height, true),
       );
 
-      rainDrops = Array.from({ length: width < 700 ? 95 : 175 }, () =>
-        createRainDrop(width, height, true),
+      rainDrops = Array.from(
+        {
+          length: Math.round(
+            (width < 700 ? 52 : 88) * qualityScale,
+          ),
+        },
+        () => createRainDrop(width, height, true),
       );
 
-      windTrails = Array.from({ length: width < 700 ? 18 : 34 }, () =>
-        createWindTrail(width, height, true),
+      windTrails = Array.from(
+        {
+          length: Math.round(
+            (width < 700 ? 12 : 22) * qualityScale,
+          ),
+        },
+        () => createWindTrail(width, height, true),
       );
 
-      summerMotes = Array.from({ length: width < 700 ? 38 : 72 }, () =>
-        createSummerMote(width, height),
+      summerMotes = Array.from(
+        {
+          length: Math.round(
+            (width < 700 ? 24 : 44) * qualityScale,
+          ),
+        },
+        () => createSummerMote(width, height),
       );
 
-      snowParticles = Array.from({ length: width < 700 ? 65 : 125 }, () =>
-        createSnowParticle(width, height, true),
+      snowParticles = Array.from(
+        {
+          length: Math.round(
+            (width < 700 ? 38 : 70) * qualityScale,
+          ),
+        },
+        () => createSnowParticle(width, height, true),
       );
     }
 
     function resizeCanvas() {
-      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      const pixelRatio = Math.min(
+        window.devicePixelRatio || 1,
+        lowPower ? 1 : 1.35,
+      );
 
       width = window.innerWidth;
       height = window.innerHeight;
-      fontSize = width < 640 ? 14 : width < 1024 ? 16 : 18;
+      fontSize = width < 640 ? 17 : width < 1024 ? 18 : 20;
 
       canvasElement.width = Math.floor(width * pixelRatio);
       canvasElement.height = Math.floor(height * pixelRatio);
@@ -1058,7 +1113,9 @@ export default function MatrixRain() {
 
       theme = nextTheme;
       weather = nextWeather;
-      enabled = document.documentElement.dataset.matrix !== "off";
+      enabled =
+        document.documentElement.dataset.matrix !== "off" &&
+        !reducedMotion;
       canvasElement.dataset.effect = theme;
       canvasElement.dataset.weather = weather;
       canvasElement.hidden = !enabled;
@@ -1075,10 +1132,26 @@ export default function MatrixRain() {
     }
 
     function draw(time: number) {
-      const deltaSeconds = Math.min((time - previousTime) / 1000, 0.05);
+      const root = document.documentElement;
+
+      if (
+        document.visibilityState !== "visible" ||
+        root.classList.contains("devos-booting") ||
+        time - lastDrawAt < targetFrameMs
+      ) {
+        frameId = window.requestAnimationFrame(draw);
+        return;
+      }
+
+      lastDrawAt = time;
+
+      const deltaSeconds = Math.min(
+        (time - previousTime) / 1000,
+        0.07,
+      );
       previousTime = time;
 
-      if (enabled && document.visibilityState === "visible") {
+      if (enabled) {
         clearCanvas();
 
         if (theme === "matrix") drawMatrix(deltaSeconds);
@@ -1110,20 +1183,47 @@ export default function MatrixRain() {
 
     function handleVisibilityChange() {
       previousTime = performance.now();
+      lastDrawAt = 0;
+    }
+
+    function handleResize() {
+      if (resizeTimerId !== null) {
+        window.clearTimeout(resizeTimerId);
+      }
+
+      resizeTimerId = window.setTimeout(() => {
+        resizeTimerId = null;
+        resizeCanvas();
+        previousTime = performance.now();
+        lastDrawAt = 0;
+      }, 140);
     }
 
     resizeCanvas();
     updateRuntimeSettings();
 
-    window.addEventListener("resize", resizeCanvas);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("resize", handleResize, {
+      passive: true,
+    });
+    document.addEventListener(
+      "visibilitychange",
+      handleVisibilityChange,
+    );
     frameId = window.requestAnimationFrame(draw);
 
     return () => {
       window.cancelAnimationFrame(frameId);
+
+      if (resizeTimerId !== null) {
+        window.clearTimeout(resizeTimerId);
+      }
+
       rootObserver.disconnect();
-      window.removeEventListener("resize", resizeCanvas);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener(
+        "visibilitychange",
+        handleVisibilityChange,
+      );
     };
   }, []);
 
