@@ -6598,3 +6598,447 @@ html.devos-booting .theme-atmosphere {
   }
 }
 
+
+
+/* =========================================================
+   DEVOS MOBILE NAVIGATION — RESPONSIVE + ACCESSIBLE
+   The menu is portalled to <body>, so fixed positioning is
+   never trapped by sticky headers, backdrop filters or themes.
+   ========================================================= */
+
+html.mobile-nav-open,
+html.mobile-nav-open body {
+  height: 100%;
+  overflow: hidden !important;
+  overscroll-behavior: none;
+}
+
+.portfolio-main > section[id],
+#about,
+#projects,
+#skills,
+#experience,
+#certificates,
+#terminal,
+#contact {
+  scroll-margin-top: 104px;
+}
+
+.nav-shell {
+  min-width: 0;
+}
+
+.brand {
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.brand-mark {
+  flex: 0 0 auto;
+}
+
+.brand-copy {
+  min-width: 0;
+}
+
+.brand-copy strong,
+.brand-copy small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-actions {
+  flex: 0 0 auto;
+}
+
+.mobile-menu-layer {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  z-index: 2147483000 !important;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.mobile-menu-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  background: rgba(1, 7, 14, 0.78);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  animation: mobile-nav-backdrop-in 180ms ease both;
+}
+
+.mobile-menu-panel {
+  position: absolute !important;
+  inset: 0 0 0 auto !important;
+  width: min(420px, 100%) !important;
+  max-width: 100% !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding:
+    max(20px, env(safe-area-inset-top))
+    max(20px, env(safe-area-inset-right))
+    max(20px, env(safe-area-inset-bottom))
+    max(20px, env(safe-area-inset-left));
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  border-left: 1px solid var(--line);
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      color-mix(in srgb, var(--primary) 15%, transparent),
+      transparent 19rem
+    ),
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--surface-solid) 96%, black),
+      color-mix(in srgb, var(--bg) 96%, black)
+    );
+  box-shadow: -24px 0 70px rgba(0, 0, 0, 0.5);
+  animation: mobile-nav-panel-in 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transform: translateZ(0);
+}
+
+@keyframes mobile-nav-backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mobile-nav-panel-in {
+  from {
+    opacity: 0;
+    transform: translate3d(36px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.mobile-menu-heading {
+  flex: 0 0 auto;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 0 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.mobile-menu-heading-copy {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.mobile-menu-heading-copy span,
+.mobile-menu-footer small {
+  color: var(--primary);
+  font-family: var(--font-code);
+  font-size: 0.64rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mobile-menu-heading-copy strong {
+  overflow: hidden;
+  color: var(--ink);
+  font-size: clamp(1.05rem, 4vw, 1.25rem);
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile-menu-close {
+  flex: 0 0 auto;
+}
+
+.mobile-menu-links {
+  flex: 1 0 auto;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  margin: 18px 0 24px;
+}
+
+.mobile-menu-links a {
+  min-width: 0;
+  min-height: 54px;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  align-items: center;
+  gap: 13px;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.018);
+  font-size: 1rem;
+  font-weight: 720;
+  line-height: 1.2;
+  touch-action: manipulation;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.mobile-menu-links a:hover,
+.mobile-menu-links a:focus-visible,
+.mobile-menu-links a.active {
+  color: var(--ink);
+  border-color:
+    color-mix(in srgb, var(--primary) 38%, transparent);
+  background:
+    color-mix(in srgb, var(--primary) 11%, transparent);
+  transform: translateX(-2px);
+}
+
+.mobile-menu-links a.active {
+  box-shadow:
+    inset 3px 0 0 var(--primary),
+    0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-menu-links a span {
+  color: var(--green);
+  font-family: var(--font-code);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.mobile-menu-links a strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile-menu-footer {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 17px 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.mobile-menu-footer > div:first-child {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.mobile-menu-footer strong {
+  color: var(--ink);
+  font-size: 0.84rem;
+}
+
+@media (max-width: 1080px) {
+  .desktop-nav {
+    gap: 15px;
+  }
+
+  .desktop-nav a {
+    font-size: 0.79rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    z-index: 1100;
+  }
+
+  .site-container.nav-shell {
+    width: min(100% - 22px, 1180px);
+    min-height: 70px;
+    gap: 10px;
+    padding-top: max(4px, env(safe-area-inset-top));
+    padding-bottom: 4px;
+  }
+
+  .desktop-nav,
+  .desktop-contact {
+    display: none !important;
+  }
+
+  .mobile-menu-button {
+    display: inline-grid !important;
+    flex: 0 0 auto;
+  }
+
+  .brand {
+    max-width: min(100%, 330px);
+    gap: 10px;
+  }
+
+  .brand-copy strong {
+    max-width: clamp(132px, 30vw, 220px);
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  html[data-theme="cyan"] .site-header,
+  html[data-theme="red"] .site-header {
+    right: 0;
+    left: 0;
+    max-width: calc(100% - 14px);
+    margin-inline: auto;
+  }
+
+  .portfolio-main > section[id],
+  #about,
+  #projects,
+  #skills,
+  #experience,
+  #certificates,
+  #terminal,
+  #contact {
+    scroll-margin-top: 88px;
+  }
+}
+
+@media (max-width: 700px) {
+  .brand-copy small {
+    display: none !important;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+  }
+
+  .brand-copy strong {
+    max-width: 170px;
+    font-size: 0.83rem;
+  }
+
+  .mobile-menu-backdrop {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .mobile-menu-panel {
+    width: min(390px, 100%) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-container.nav-shell {
+    width: calc(100% - 16px);
+    min-height: 64px;
+  }
+
+  .desktop-theme-toggle {
+    display: none;
+  }
+
+  .brand {
+    max-width: calc(100% - 52px);
+  }
+
+  .brand-copy strong {
+    max-width: min(49vw, 175px);
+    font-size: 0.8rem;
+  }
+
+  .mobile-menu-panel {
+    width: 100% !important;
+    border-left: 0;
+    border-radius: 0 !important;
+    box-shadow: none;
+  }
+
+  .mobile-menu-backdrop {
+    display: none;
+  }
+
+  .mobile-menu-links {
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .mobile-menu-links a {
+    min-height: 52px;
+    padding-inline: 12px;
+  }
+}
+
+@media (max-width: 350px) {
+  .brand-copy {
+    display: none;
+  }
+
+  .brand {
+    flex: 0 0 auto;
+  }
+
+  .mobile-menu-panel {
+    padding-inline:
+      max(15px, env(safe-area-inset-left))
+      max(15px, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 900px) and (max-height: 560px) {
+  .mobile-menu-panel {
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .mobile-menu-heading {
+    min-height: 52px;
+    padding-bottom: 10px;
+  }
+
+  .mobile-menu-links {
+    gap: 4px;
+    margin: 10px 0 14px;
+  }
+
+  .mobile-menu-links a {
+    min-height: 46px;
+    padding-block: 7px;
+  }
+
+  .mobile-menu-footer {
+    padding-top: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu-backdrop,
+  .mobile-menu-panel {
+    animation: none !important;
+  }
+
+  .mobile-menu-links a {
+    transition: none !important;
+  }
+}
