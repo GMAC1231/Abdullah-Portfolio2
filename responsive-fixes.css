@@ -1240,3 +1240,367 @@ html[data-theme="purple"] .theme-atmosphere {
     transform: none !important;
   }
 }
+
+/* =========================================================
+   EMBER MOBILE — PROJECT WIDTH, PREVIEW AND ACTION REPAIR
+   ========================================================= */
+
+@media (max-width: 900px) {
+  /*
+   * The Ember desktop card is a two-column industrial layout.
+   * Force one contained column on tablets/phones so neither the
+   * miniature preview nor the action rows can extend past the viewport.
+   */
+  html[data-theme="ember"] .project-grid,
+  html[data-theme="ember"] .project-card,
+  html[data-theme="ember"] .project-card-body,
+  html[data-theme="ember"] .project-card > .project-visual--compact,
+  html[data-theme="ember"] .related-project-grid,
+  html[data-theme="ember"] .related-project-card,
+  html[data-theme="ember"] .related-project-card__body {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+
+  html[data-theme="ember"] .project-card,
+  html[data-theme="ember"] .related-project-card {
+    display: block !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    overflow: hidden !important;
+    border-radius: 5px !important;
+    contain: layout paint;
+    transform: none !important;
+  }
+
+  html[data-theme="ember"] .project-card:hover,
+  html[data-theme="ember"] .related-project-card:hover {
+    transform: translateY(-2px) !important;
+  }
+
+  html[data-theme="ember"] .project-card > .project-visual--compact,
+  html[data-theme="ember"] .related-project-card .project-visual--compact {
+    height: auto !important;
+    min-height: clamp(205px, 52vw, 275px) !important;
+    overflow: hidden !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    isolation: isolate;
+  }
+
+  html[data-theme="ember"] .project-card-body,
+  html[data-theme="ember"] .related-project-card__body {
+    position: relative;
+    z-index: 3;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: clamp(18px, 4.8vw, 24px) !important;
+    overflow: hidden;
+  }
+
+  html[data-theme="ember"] .project-card-body > p {
+    min-height: 0 !important;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+
+  html[data-theme="ember"] .project-card::after,
+  html[data-theme="ember"] .related-project-card::after {
+    display: none;
+  }
+
+  /* Keep the internship attribution and its social button inside the card. */
+  html[data-theme="ember"] .project-internship,
+  html[data-theme="ember"] .project-internship--compact {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 9px;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 0 rgba(251, 146, 60, 0.055);
+  }
+
+  html[data-theme="ember"] .project-internship__copy,
+  html[data-theme="ember"] .project-internship__copy > a {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  html[data-theme="ember"] .project-internship__copy > a {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  html[data-theme="ember"] .project-internship__links {
+    flex: 0 0 auto;
+  }
+
+  /*
+   * TaskFlow miniature: reserve space for the Ember offset shadow.
+   * Previously width:100% plus a 10px right shadow touched the clipped
+   * edge, making the green preview look cut off.
+   */
+  html[data-theme="ember"] .project-visual--compact .visual-special--taskflow {
+    inset: 27px 12px 31px 12px !important;
+    width: auto;
+    max-width: none;
+    overflow: visible;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview {
+    width: calc(100% - 10px) !important;
+    max-width: calc(100% - 10px) !important;
+    height: min(148px, 100%) !important;
+    min-width: 0;
+    margin: 0 10px 8px 0;
+    grid-template-columns: 34px minmax(0, 1fr);
+    box-sizing: border-box;
+    transform: none !important;
+    box-shadow:
+      6px 6px 0 rgba(251, 146, 60, 0.06),
+      0 18px 42px rgba(0, 0, 0, 0.35) !important;
+  }
+
+  html[data-theme="ember"] .taskflow-preview-sidebar,
+  html[data-theme="ember"] .taskflow-preview-main,
+  html[data-theme="ember"] .taskflow-preview-header,
+  html[data-theme="ember"] .taskflow-preview-header > div,
+  html[data-theme="ember"] .taskflow-preview-tools,
+  html[data-theme="ember"] .taskflow-preview-stats,
+  html[data-theme="ember"] .taskflow-preview-board {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview-sidebar {
+    gap: 7px;
+    padding: 7px 4px;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview-main {
+    padding: 8px 7px;
+    overflow: hidden;
+  }
+
+  html[data-theme="ember"] .taskflow-preview-header {
+    gap: 7px;
+  }
+
+  html[data-theme="ember"] .taskflow-preview-header > div:first-child {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  html[data-theme="ember"] .taskflow-preview-header small,
+  html[data-theme="ember"] .taskflow-preview-header b {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  html[data-theme="ember"] .taskflow-preview-tools {
+    flex: 0 0 auto;
+    gap: 5px;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview-stats,
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview-board {
+    gap: 4px;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview-stat {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  /* Fix all modern project action buttons, including the last GitHub row. */
+  html[data-theme="ember"] .project-card-actions,
+  html[data-theme="ember"] .related-project-actions {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr) !important;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  html[data-theme="ember"] .project-card-actions .project-card-action,
+  html[data-theme="ember"] .project-card-actions a:last-child.project-card-action,
+  html[data-theme="ember"] .related-project-actions .related-project-action {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 46px;
+    justify-content: space-between !important;
+    gap: 10px;
+    padding: 11px 14px !important;
+    overflow: hidden;
+    border-radius: 3px !important;
+    clip-path: none !important;
+    box-sizing: border-box;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  html[data-theme="ember"] .project-card-actions .project-card-action svg,
+  html[data-theme="ember"] .related-project-actions .related-project-action svg {
+    flex: 0 0 auto;
+  }
+
+  html[data-theme="ember"] .project-card-actions .project-card-action--github {
+    grid-column: auto !important;
+  }
+
+  html[data-theme="ember"] .tech-list,
+  html[data-theme="ember"] .tech-list--small {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+
+  html[data-theme="ember"] .tech-list span,
+  html[data-theme="ember"] .tech-list--small span {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Keep the floating green DEVOS launcher inside phone safe areas. */
+  .terminal-launcher {
+    right: max(10px, env(safe-area-inset-right)) !important;
+    bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    max-width: calc(
+      100vw - max(10px, env(safe-area-inset-left)) -
+      max(10px, env(safe-area-inset-right))
+    );
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 520px) {
+  html[data-theme="ember"] .project-card-body,
+  html[data-theme="ember"] .related-project-card__body {
+    padding: 17px 16px 19px !important;
+  }
+
+  html[data-theme="ember"] .project-card-meta {
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  html[data-theme="ember"] .project-internship,
+  html[data-theme="ember"] .project-internship--compact {
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    padding: 8px;
+  }
+
+  html[data-theme="ember"] .project-internship__copy small {
+    font-size: 0.49rem;
+    letter-spacing: 0.06em;
+  }
+
+  html[data-theme="ember"] .project-internship__copy > a {
+    font-size: 0.66rem;
+  }
+
+  html[data-theme="ember"] .project-card h3 {
+    font-size: clamp(1.2rem, 6vw, 1.48rem);
+    overflow-wrap: anywhere;
+  }
+
+  html[data-theme="ember"] .project-card-body > p {
+    font-size: 0.88rem;
+    line-height: 1.62;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .visual-special--taskflow {
+    inset: 23px 9px 27px 9px !important;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview {
+    width: calc(100% - 8px) !important;
+    max-width: calc(100% - 8px) !important;
+    margin-right: 8px;
+    grid-template-columns: 31px minmax(0, 1fr);
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview-logo {
+    width: 21px;
+    height: 21px;
+  }
+
+  html[data-theme="ember"] .taskflow-preview-tools > svg {
+    display: none;
+  }
+
+  html[data-theme="ember"] .taskflow-preview-tools span {
+    width: 22px;
+    height: 22px;
+  }
+
+  html[data-theme="ember"] .project-card-actions .project-card-action,
+  html[data-theme="ember"] .project-card-actions a:last-child.project-card-action,
+  html[data-theme="ember"] .related-project-actions .related-project-action {
+    min-height: 45px;
+    padding-inline: 12px !important;
+    font-size: 0.64rem;
+    letter-spacing: 0.015em;
+  }
+}
+
+@media (max-width: 390px) {
+  html[data-theme="ember"] .project-card > .project-visual--compact,
+  html[data-theme="ember"] .related-project-card .project-visual--compact {
+    min-height: 190px !important;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .visual-special--taskflow {
+    inset: 20px 8px 23px 8px !important;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview {
+    height: 137px !important;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview-board {
+    display: none;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 8px;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview-stat > i {
+    display: none;
+  }
+
+  html[data-theme="ember"] .project-visual--compact .taskflow-preview-stat {
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 5px 3px;
+    text-align: center;
+  }
+
+  html[data-theme="ember"] .project-card-actions .project-card-action,
+  html[data-theme="ember"] .project-card-actions a:last-child.project-card-action,
+  html[data-theme="ember"] .related-project-actions .related-project-action {
+    font-size: 0.61rem;
+  }
+
+  .terminal-launcher {
+    right: max(8px, env(safe-area-inset-right)) !important;
+    bottom: max(8px, env(safe-area-inset-bottom)) !important;
+    min-height: 44px;
+    padding-inline: 11px;
+  }
+}
