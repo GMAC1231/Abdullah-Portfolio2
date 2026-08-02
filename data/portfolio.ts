@@ -501,6 +501,24 @@ export const experiences = [
 
 export const certificates = [
   {
+    title: "IBM Java Developer Professional Certificate",
+    issuer: "IBM Skills Network / Coursera",
+    date: "August 2, 2026",
+    courses: "14 courses",
+    category: "Java",
+    skills: ["Java", "Object-Oriented Programming", "Spring Framework", "Databases", "Microservices", "Docker"],
+    file: "/documents/IBM-Java-Developer.pdf",
+  },
+  {
+    title: "Frontend Developer Virtual Internship",
+    issuer: "SoftGrowTech",
+    date: "June 25 – July 25, 2026",
+    courses: "1-month internship",
+    category: "Internship",
+    skills: ["Frontend Development", "Responsive UI", "JavaScript", "Next.js", "Firebase"],
+    file: "/documents/SoftGrowTech-Frontend-Developer-Internship.pdf",
+  },
+  {
     title: "Web Development Remote Internship",
     issuer: "Qwetrum Technologies",
     date: "June 2026",

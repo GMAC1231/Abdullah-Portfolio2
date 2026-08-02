@@ -37,8 +37,8 @@ export default function CertificatesSection() {
         <Reveal>
           <SectionHeading
             eyebrow="Professional credentials"
-            title="Seven major credentials covering 62 courses across software, mobile, AI, data, BI, and games."
-            description="My professional learning includes IBM, Google, and Michigan State University credentials, together with a completed remote web-development internship."
+            title="Eight major credentials covering 76 courses, plus two completed remote internships."
+            description="My professional learning includes IBM, Google, and Michigan State University credentials, together with completed frontend and web-development internships."
             centered
           />
         </Reveal>
