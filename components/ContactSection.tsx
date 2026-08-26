@@ -113,7 +113,7 @@ export default function ContactSection() {
               <div>
                 <small>Location</small>
                 <strong>
-                  Oman · Available remotely
+                  Available Remotely Anywhere
                 </strong>
               </div>
             </div>
