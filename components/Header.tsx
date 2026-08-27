@@ -277,6 +277,17 @@ export default function Header() {
           </Link>
 
           <a
+            href={contactLinks.whatsapp}
+            target="_blank"
+            rel="noreferrer"
+            onClick={closeMenu}
+            aria-label={`Chat with Abdullah on WhatsApp at ${contactLinks.phone}`}
+          >
+            <span>08</span>
+            <strong>{contactLinks.phone}</strong>
+          </a>
+
+          <a
             href={withBasePath(
               "/documents/Abdullah-Muhammad-CV.pdf",
             )}
@@ -284,7 +295,7 @@ export default function Header() {
             rel="noreferrer"
             onClick={closeMenu}
           >
-            <span>08</span>
+            <span>09</span>
             <strong>View CV</strong>
           </a>
         </nav>
