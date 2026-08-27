@@ -4,6 +4,7 @@ import "./globals.css";
 import "./theme-layouts.css";
 import "./red-theme.css";
 import "./boot-loader-themes.css";
+import "./hero-theme-balance.css";
 
 import AutoThemeController from "@/components/AutoThemeController";
 import BootLoader from "@/components/BootLoader";
