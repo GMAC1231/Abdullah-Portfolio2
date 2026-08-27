@@ -48,7 +48,7 @@ export default function Hero() {
 
           <p className="hero-kicker"><Sparkles size={15} /> Software · Web · Mobile Application Developer</p>
           <h1>
-            I build digital products that feel <span>clear, fast, and complete.</span>
+           I design and develop professional web and mobile applications tailored to each client’s specific requirements, with a strong focus on <span>performance, usability, reliability, and overall product quality.</span>
           </h1>
           <p className="hero-description">
             I’m <strong>Abdullah Muhammad</strong>, a software developer based in Oman. I build responsive React and Next.js applications, cross-platform Flutter experiences, Firebase and Flask services, data-driven solutions, and Unity game prototypes with a strong focus on maintainable code and reliable user workflows.
