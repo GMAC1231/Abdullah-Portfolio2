@@ -796,9 +796,9 @@ svg {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(390px, 0.72fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.78fr);
   align-items: center;
-  gap: clamp(58px, 8vw, 112px);
+  gap: clamp(48px, 7vw, 96px);
 }
 
 .hero-copy {
@@ -970,10 +970,16 @@ svg {
 
 .hero-profile-wrap {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .hero-profile-card {
   position: relative;
+  width: 100%;
+  max-width: 430px;
   padding: 15px;
   border: 1px solid rgba(34, 211, 238, 0.24);
   border-radius: 37px;
@@ -1506,7 +1512,7 @@ svg {
   color: var(--green);
 }
 
-.project-card-actions a:last-child:not(.project-card-action) {
+.project-card-actions a:last-child {
   width: 35px;
   height: 35px;
   justify-content: center;

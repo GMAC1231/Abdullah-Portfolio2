@@ -1,0 +1,112 @@
+/* =========================================================
+   MATRIX NUMBER RAIN — CANVAS VISIBILITY FIX
+   Keep this block at the VERY END of app/globals.css
+   ========================================================= */
+
+.matrix-rain {
+  position: fixed !important;
+  inset: 0 !important;
+
+  width: 100vw !important;
+  height: 100vh !important;
+
+  /*
+   * Places Matrix rain above section backgrounds,
+   * while pointer-events prevents interaction problems.
+   */
+  z-index: 5 !important;
+
+  display: block !important;
+  visibility: visible !important;
+
+  pointer-events: none !important;
+  user-select: none;
+
+  opacity: 0.32;
+
+  transform: translateZ(0);
+  backface-visibility: hidden;
+
+  /*
+   * Do not use contain: strict.
+   * It may cause Canvas rendering problems.
+   */
+}
+
+/* Portfolio remains visible below the Matrix layer */
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+}
+
+/* Keep navigation above Matrix numbers */
+
+.site-header {
+  z-index: 100;
+}
+
+/* Terminal command: matrix off */
+
+html[data-matrix="off"] .matrix-rain {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Terminal command: matrix on */
+
+html[data-matrix="on"] .matrix-rain {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Layout modes must not disable Matrix */
+
+html[data-layout="classic"][data-matrix="on"] .matrix-rain,
+html[data-layout="console"][data-matrix="on"] .matrix-rain,
+html[data-layout="arcade"][data-matrix="on"] .matrix-rain,
+html[data-layout="minimal"][data-matrix="on"] .matrix-rain {
+  display: block !important;
+}
+
+/* Theme-specific visibility */
+
+html[data-theme="matrix"] .matrix-rain {
+  opacity: 0.38;
+}
+
+html[data-theme="cyan"] .matrix-rain {
+  opacity: 0.3;
+}
+
+html[data-theme="purple"] .matrix-rain {
+  opacity: 0.28;
+}
+
+html[data-theme="ember"] .matrix-rain {
+  opacity: 0.26;
+}
+
+/*
+ * Do not hide Canvas rain when the operating system
+ * has reduced-motion enabled.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-matrix="off"]) .matrix-rain {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+
+/* Reduce visual distraction on smaller screens */
+
+@media (max-width: 700px) {
+  .matrix-rain {
+    opacity: 0.23;
+  }
+
+  html[data-theme="matrix"] .matrix-rain {
+    opacity: 0.28;
+  }
+}
