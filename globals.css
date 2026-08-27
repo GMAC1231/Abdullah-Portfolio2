@@ -812,9 +812,9 @@ svg {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(390px, 0.72fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.78fr);
   align-items: center;
-  gap: clamp(58px, 8vw, 112px);
+  gap: clamp(48px, 7vw, 96px);
 }
 
 .hero-copy {
@@ -986,10 +986,16 @@ svg {
 
 .hero-profile-wrap {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .hero-profile-card {
   position: relative;
+  width: 100%;
+  max-width: 430px;
   padding: 15px;
   border: 1px solid rgba(34, 211, 238, 0.24);
   border-radius: 37px;
@@ -1522,7 +1528,7 @@ svg {
   color: var(--green);
 }
 
-.project-card-actions a:last-child:not(.project-card-action) {
+.project-card-actions a:last-child {
   width: 35px;
   height: 35px;
   justify-content: center;
@@ -7077,5 +7083,80 @@ html.mobile-nav-open body {
 
   .mobile-menu-links a {
     transition: none !important;
+  }
+}
+
+/* Mobile header: keep WhatsApp phone number visible */
+@media (max-width: 900px) {
+  .nav-phone {
+    display: inline-flex !important;
+    font-size: 0.68rem;
+    gap: 5px;
+    padding: 6px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    flex: 0 0 auto;
+  }
+
+  .nav-phone svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+    gap: 6px;
+  }
+
+  .brand {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .brand-copy {
+    min-width: 0;
+  }
+
+  .brand-copy small {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-container.nav-shell {
+    width: min(100% - 12px, 1180px);
+    gap: 6px;
+  }
+
+  .brand-copy strong {
+    max-width: 118px;
+    font-size: 0.78rem;
+  }
+
+  .nav-phone {
+    font-size: 0.62rem;
+    padding: 5px 6px;
+  }
+
+  .nav-phone svg {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media (max-width: 390px) {
+  .brand-mark {
+    display: none;
+  }
+
+  .brand-copy strong {
+    max-width: 92px;
+    font-size: 0.72rem;
+  }
+
+  .nav-phone {
+    font-size: 0.58rem;
+    padding: 5px;
   }
 }
