@@ -46,12 +46,14 @@ export default function Hero() {
             Open to software, web, mobile, data, and game-development opportunities
           </div>
 
-          <p className="hero-kicker"><Sparkles size={15} /> Software · Web · Mobile Application Developer</p>
+          <p className="hero-kicker">
+            <Sparkles size={15} /> Software · Web · Mobile Application Developer
+          </p>
           <h1>
-           I design and develop professional web and mobile applications tailored to each client’s specific requirements, with a strong focus on <span>performance, usability, reliability, and overall product quality.</span>
+            I build professional digital products tailored to <span>your requirements.</span>
           </h1>
           <p className="hero-description">
-            I’m <strong>Abdullah Muhammad</strong>, a software developer based in Oman. I build responsive React and Next.js applications, cross-platform Flutter experiences, Firebase and Flask services, data-driven solutions, and Unity game prototypes with a strong focus on maintainable code and reliable user workflows.
+            I’m <strong>Abdullah Muhammad</strong>, a software developer specializing in web and mobile application development. I design and develop responsive, reliable, and user-focused applications tailored to client requirements using technologies such as React, Next.js, Flutter, Firebase, Flask, and Unity.
           </p>
 
           <div className="hero-actions">
