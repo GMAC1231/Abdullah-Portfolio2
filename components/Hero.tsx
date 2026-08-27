@@ -50,7 +50,7 @@ export default function Hero() {
             <Sparkles size={15} /> Software · Web · Mobile Application Developer
           </p>
           <h1>
-            I build professional digital products tailored to <span>your requirements.</span>
+            I design and develop high-quality web and mobile applications tailored to each client’s specific requirements and specifications.
           </h1>
           <p className="hero-description">
             I’m <strong>Abdullah Muhammad</strong>, a software developer specializing in web and mobile application development. I design and develop responsive, reliable, and user-focused applications tailored to client requirements using technologies such as React, Next.js, Flutter, Firebase, Flask, and Unity.
