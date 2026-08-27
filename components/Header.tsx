@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { createPortal } from "react-dom";
 import {
   useEffect,
@@ -12,6 +12,7 @@ import {
 
 import logo from "@/assets/ad-logo.png";
 import ThemeToggle from "@/components/ThemeToggle";
+import { contactLinks } from "@/data/portfolio";
 import { withBasePath } from "@/lib/paths";
 
 const links = [
@@ -356,6 +357,11 @@ export default function Header() {
         </nav>
 
         <div className="nav-actions">
+          <a className="nav-phone" href={`tel:${contactLinks.phone.replace(/\s/g, "")}`} aria-label={`Call ${contactLinks.phone}`}>
+            <Phone size={15} />
+            <span>{contactLinks.phone}</span>
+          </a>
+
           <div className="desktop-theme-toggle">
             <ThemeToggle />
           </div>

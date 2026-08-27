@@ -241,7 +241,7 @@ function lineTextFromProficiency() {
 
 const virtualFiles: Record<string, string> = {
   "about.md":
-    "# Abdullah Muhammad\nFrontend, web, and mobile developer based in Oman.",
+    "# Abdullah Muhammad\nFrontend, web, and mobile developer based in Pakistan.",
   "skills.json": JSON.stringify(skillProficiency, null, 2),
   "projects.json": JSON.stringify(
     projects.map(
@@ -636,7 +636,7 @@ export default function DeveloperTerminal() {
       case "about":
         append(
           "output",
-          "Abdullah Muhammad — Frontend, Web & Mobile Application Developer based in Oman. I build responsive React, Next.js, Firebase, Flutter, Flask, and Java solutions.",
+          "Abdullah Muhammad — Frontend, Web & Mobile Application Developer based in Pakistan. I build responsive React, Next.js, Firebase, Flutter, Flask, and Java solutions.",
         );
         break;
       case "skills":
@@ -711,7 +711,7 @@ export default function DeveloperTerminal() {
       case "contact":
         append(
           "output",
-          `Email: ${contactLinks.email}\nWhatsApp: ${contactLinks.phone}\nLocation: Oman · Available remotely`,
+          `Email: ${contactLinks.email}\nWhatsApp: ${contactLinks.phone}\nLocation: Pakistan · Available remotely`,
         );
         break;
       case "whoami":
@@ -723,7 +723,7 @@ export default function DeveloperTerminal() {
       case "neofetch":
         append(
           "output",
-          `       /\\       Abdullah@portfolio\n      /  \\      ------------------\n     / /\\ \\     OS: DEVOS 4.16\n    / ____ \\    Stack: React · Next.js · TypeScript\n   /_/    \\_\\   Cloud: Firebase · Firestore\n                Mobile: Flutter · React Native\n                Location: Oman\n                Runtime: ${runtimeLabel}`,
+          `       /\\       Abdullah@portfolio\n      /  \\      ------------------\n     / /\\ \\     OS: DEVOS 4.16\n    / ____ \\    Stack: React · Next.js · TypeScript\n   /_/    \\_\\   Cloud: Firebase · Firestore\n                Mobile: Flutter · React Native\n                Location: Pakistan\n                Runtime: ${runtimeLabel}`,
         );
         break;
       case "github":

@@ -54,7 +54,7 @@ export default function Hero() {
             <span>specific requirements and specifications.</span>
           </h1>
           <p className="hero-description">
-            I’m <strong>Abdullah Muhammad</strong>, a software developer specializing in web and mobile application development. I design and develop responsive, reliable, and user-focused applications tailored to client requirements using technologies such as React, Next.js, Flutter, Firebase, Flask, and Unity.
+            I am a software developer specializing in the design and development of high-quality web and mobile applications. I deliver responsive, reliable, and user-focused solutions tailored to client requirements and technical specifications, using modern technologies such as React, Next.js, Flutter, Firebase, Flask, and Unity.
           </p>
 
           <div className="hero-actions">
@@ -76,7 +76,7 @@ export default function Hero() {
 
           <div className="hero-contact-row">
             <a href={`mailto:${contactLinks.email}`}><Mail size={16} /> {contactLinks.email}</a>
-            <span><MapPin size={16} /> Oman · Available remotely</span>
+            <span><MapPin size={16} /> Pakistan · Available remotely</span>
           </div>
 
           <div className="hero-socials">

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUp, Gamepad2, Mail } from "lucide-react";
+import { ArrowUp, Gamepad2, Mail, Phone } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import logo from "@/assets/ad-logo.png";
 import { contactLinks } from "@/data/portfolio";
@@ -25,12 +25,13 @@ export default function Footer() {
           <a href={contactLinks.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedinIn size={17} /></a>
           <a href={contactLinks.itch} target="_blank" rel="noreferrer" aria-label="itch.io game portfolio"><Gamepad2 size={18} /></a>
           <a href={`mailto:${contactLinks.email}`} aria-label="Email"><Mail size={18} /></a>
+          <a href={`tel:${contactLinks.phone.replace(/\s/g, "")}`} aria-label={`Call ${contactLinks.phone}`}><Phone size={18} /></a>
           <a href="#top" aria-label="Back to top"><ArrowUp size={18} /></a>
         </div>
       </div>
       <div className="site-container footer-bottom">
         <span>© {new Date().getFullYear()} Abdullah Muhammad. Built with React, Next.js, TypeScript, and a multi-theme DEVOS interface.</span>
-        <span>Designed and developed in Oman.</span>
+        <span>Pakistan · <a className="footer-phone-link" href={`tel:${contactLinks.phone.replace(/\s/g, "")}`}>{contactLinks.phone}</a></span>
       </div>
     </footer>
   );

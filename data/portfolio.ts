@@ -492,7 +492,7 @@ export const experiences = [
   {
     period: "Ongoing",
     role: "Independent Software Developer",
-    organization: "Self-Directed Project Development · Oman / Remote",
+    organization: "Self-Directed Project Development · Pakistan / Remote",
     description:
       "Design and build web and mobile applications using Flutter, Android Studio, React, Next.js, Flask, Python, and Firebase while integrating authentication, real-time data, REST APIs, automated email services, and AI-assisted development workflows.",
     tags: ["Flutter", "React", "Next.js", "Flask", "Firebase", "GitHub"],
@@ -594,8 +594,8 @@ export const certificates = [
 
 export const contactLinks = {
   email: "abdullahmshafiq098@gmail.com",
-  phone: "+968 92287421",
-  whatsapp: "https://api.whatsapp.com/send?phone=96892287421",
+  phone: "+92 3060005503",
+  whatsapp: "https://api.whatsapp.com/send?phone=923060005503",
   github: "https://github.com/GMAC1231",
   linkedin: "https://www.linkedin.com/in/abdullah-muhammad-30948623b/",
   itch: "https://abdullah0364.itch.io/",
