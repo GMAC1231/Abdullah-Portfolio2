@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { createPortal } from "react-dom";
 import {
   useEffect,
@@ -357,8 +358,8 @@ export default function Header() {
         </nav>
 
         <div className="nav-actions">
-          <a className="nav-phone" href={`tel:${contactLinks.phone.replace(/\s/g, "")}`} aria-label={`Call ${contactLinks.phone}`}>
-            <Phone size={15} />
+          <a className="nav-phone" href={contactLinks.whatsapp} target="_blank" rel="noreferrer" aria-label={`Chat with Abdullah on WhatsApp at ${contactLinks.phone}`}>
+            <FaWhatsapp size={16} />
             <span>{contactLinks.phone}</span>
           </a>
 

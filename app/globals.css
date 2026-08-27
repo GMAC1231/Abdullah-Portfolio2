@@ -7085,3 +7085,78 @@ html.mobile-nav-open body {
     transition: none !important;
   }
 }
+
+/* Mobile header: keep WhatsApp phone number visible */
+@media (max-width: 900px) {
+  .nav-phone {
+    display: inline-flex !important;
+    font-size: 0.68rem;
+    gap: 5px;
+    padding: 6px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    flex: 0 0 auto;
+  }
+
+  .nav-phone svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+    gap: 6px;
+  }
+
+  .brand {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .brand-copy {
+    min-width: 0;
+  }
+
+  .brand-copy small {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-container.nav-shell {
+    width: min(100% - 12px, 1180px);
+    gap: 6px;
+  }
+
+  .brand-copy strong {
+    max-width: 118px;
+    font-size: 0.78rem;
+  }
+
+  .nav-phone {
+    font-size: 0.62rem;
+    padding: 5px 6px;
+  }
+
+  .nav-phone svg {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media (max-width: 390px) {
+  .brand-mark {
+    display: none;
+  }
+
+  .brand-copy strong {
+    max-width: 92px;
+    font-size: 0.72rem;
+  }
+
+  .nav-phone {
+    font-size: 0.58rem;
+    padding: 5px;
+  }
+}
