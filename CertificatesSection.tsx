@@ -24,6 +24,10 @@ export default function CertificatesSection() {
     [filter],
   );
 
+  const totalCertificates = certificates.length;
+  const internshipCount = certificates.filter((certificate) => certificate.category === "Internship").length;
+  const majorCertificates = totalCertificates - internshipCount;
+
   useEffect(() => {
     document.body.style.overflow = selected ? "hidden" : "";
     return () => {
@@ -37,7 +41,7 @@ export default function CertificatesSection() {
         <Reveal>
           <SectionHeading
             eyebrow="Professional credentials"
-            title="Nine major credentials covering 82 courses, plus two completed remote internships."
+            title={`${totalCertificates} total credentials — ${majorCertificates} major certificates plus ${internshipCount} completed remote internships.`}
             description="My professional learning includes Vanderbilt University, IBM, Google, and Michigan State University credentials, together with completed frontend and web-development internships."
             centered
           />

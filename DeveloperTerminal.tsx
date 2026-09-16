@@ -693,7 +693,7 @@ export default function DeveloperTerminal() {
       case "experience":
         append(
           "output",
-          "SoftGrowTech — Frontend Development Internship\n  Final project: TaskFlow Firebase Web App\nQwetrum Technologies — Web Development Internship\n  Capstone: Complete E-Commerce Website\nIndependent Software Developer — Ongoing self-directed delivery\nCredentials — 7 major programs / 62 completed courses",
+          "SoftGrowTech — Frontend Development Internship\n  Final project: TaskFlow Firebase Web App\nQwetrum Technologies — Web Development Internship\n  Capstone: Complete E-Commerce Website\nIndependent Software Developer — Ongoing self-directed delivery\nCredentials — 11 total credentials / 9 major certificates / 82 completed courses",
         );
         break;
       case "internships":
@@ -705,7 +705,7 @@ export default function DeveloperTerminal() {
       case "certificates":
         append(
           "output",
-          "Qwetrum Technologies — Web Development Remote Internship\nIBM Mobile App Developer\nIBM AI Developer\nIBM Full Stack Software Developer",
+          "11 total credentials\n────────────────────────────────────────────────────\nAI Agent Developer Specialization\nIBM Java Developer Professional Certificate\nFrontend Developer Virtual Internship\nWeb Development Remote Internship\nIBM iOS & Android Mobile App Developer\nIBM AI Developer Professional Certificate\nIBM Full Stack Software Developer\nGame Design and Development with Unity\nGoogle Business Intelligence Professional Certificate\nGoogle Advanced Data Analytics Professional Certificate\nGoogle Data Analytics Professional Certificate",
         );
         break;
       case "contact":

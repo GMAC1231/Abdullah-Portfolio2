@@ -17,18 +17,20 @@ import {
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import profilePhoto from "@/assets/abdullah-photo.png";
 import TechnologyShowcase from "@/components/TechnologyShowcase";
-import { contactLinks, projects } from "@/data/portfolio";
+import { certificates, contactLinks, projects } from "@/data/portfolio";
 import { withBasePath } from "@/lib/paths";
-
-const stats = [
-  { value: String(projects.length), label: "Portfolio projects" },
-  { value: "82", label: "Credential courses" },
-  { value: "9", label: "Major credentials" },
-  { value: "2", label: "Remote internships" },
-];
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
+  const internshipCount = certificates.filter((certificate) => certificate.category === "Internship").length;
+  const totalCredentials = certificates.length;
+
+  const stats = [
+    { value: String(projects.length), label: "Portfolio projects" },
+    { value: "82", label: "Credential courses" },
+    { value: String(totalCredentials), label: "Certificates" },
+    { value: String(internshipCount), label: "Remote internships" },
+  ];
 
   return (
     <section className="hero-section" id="home">
