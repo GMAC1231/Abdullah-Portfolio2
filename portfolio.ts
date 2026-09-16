@@ -507,7 +507,7 @@ export const certificates = [
     courses: "6 courses",
     category: "AI",
     skills: ["AI Agents", "Agentic AI", "Python", "Prompt Engineering", "Custom GPTs", "Trustworthy AI"],
-    file: "/documents/AI Agent Developer.pdf",
+    file: "/documents/AI-Agent-Developer-Specialization.pdf",
   },
   {
     title: "IBM Java Developer Professional Certificate",
