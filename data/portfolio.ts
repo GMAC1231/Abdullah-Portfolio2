@@ -514,7 +514,7 @@ export const certificates = [
       "Custom GPTs",
       "Trustworthy AI",
     ],
-    file: "/documents/AI-Agent-Developer.pdf",
+    file: "/documents/AI Agent Developer.pdf",
   },
 
   {
