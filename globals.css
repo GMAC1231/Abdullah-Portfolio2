@@ -7160,3 +7160,71 @@ html.mobile-nav-open body {
     padding: 5px;
   }
 }
+
+
+/* Ember polish — premium credential cards */
+html[data-theme="ember"] .certificate-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(251, 146, 60, 0.28);
+  background:
+    radial-gradient(circle at 88% 5%, rgba(250, 204, 21, 0.11), transparent 12rem),
+    linear-gradient(145deg, rgba(61, 29, 12, 0.96), rgba(19, 8, 3, 0.98));
+  box-shadow:
+    0 28px 76px rgba(0, 0, 0, 0.48),
+    inset 3px 0 0 rgba(251, 146, 60, 0.14),
+    inset 0 1px 0 rgba(255, 237, 213, 0.05);
+}
+
+html[data-theme="ember"] .certificate-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fb923c 22%, #facc15 62%, transparent);
+  opacity: 0.82;
+}
+
+html[data-theme="ember"] .certificate-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(250, 204, 21, 0.55);
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.55),
+    0 0 34px rgba(251, 146, 60, 0.12),
+    inset 3px 0 0 rgba(250, 204, 21, 0.22);
+}
+
+html[data-theme="ember"] .certificate-icon {
+  color: #2a1003;
+  border: 1px solid rgba(255, 237, 213, 0.22);
+  background: linear-gradient(135deg, #facc15, #fb923c 72%);
+  box-shadow: 0 12px 30px rgba(251, 146, 60, 0.2);
+}
+
+html[data-theme="ember"] .certificate-number {
+  color: rgba(250, 204, 21, 0.2);
+}
+
+html[data-theme="ember"] .certificate-card > p {
+  color: #fbbf24;
+}
+
+html[data-theme="ember"] .certificate-card h3 {
+  color: #fff7ed;
+}
+
+html[data-theme="ember"] .certificate-divider {
+  border-color: rgba(251, 146, 60, 0.18);
+}
+
+html[data-theme="ember"] .certificate-actions button {
+  border-color: rgba(251, 146, 60, 0.3);
+  color: #fed7aa;
+  background: rgba(251, 146, 60, 0.06);
+}
+
+html[data-theme="ember"] .certificate-actions button:hover {
+  border-color: rgba(250, 204, 21, 0.6);
+  color: #fff7ed;
+  background: rgba(250, 204, 21, 0.1);
+}

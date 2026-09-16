@@ -501,6 +501,15 @@ export const experiences = [
 
 export const certificates = [
   {
+    title: "AI Agent Developer Specialization",
+    issuer: "Vanderbilt University / Coursera",
+    date: "September 16, 2026",
+    courses: "6 courses",
+    category: "AI",
+    skills: ["AI Agents", "Agentic AI", "Python", "Prompt Engineering", "Custom GPTs", "Trustworthy AI"],
+    file: "/documents/AI Agent Developer.pdf",
+  },
+  {
     title: "IBM Java Developer Professional Certificate",
     issuer: "IBM Skills Network / Coursera",
     date: "August 2, 2026",

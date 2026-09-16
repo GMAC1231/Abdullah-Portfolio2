@@ -22,8 +22,8 @@ import { withBasePath } from "@/lib/paths";
 
 const stats = [
   { value: String(projects.length), label: "Portfolio projects" },
-  { value: "62", label: "Credential courses" },
-  { value: "7", label: "Major credentials" },
+  { value: "82", label: "Credential courses" },
+  { value: "9", label: "Major credentials" },
   { value: "2", label: "Remote internships" },
 ];
 
